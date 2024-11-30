@@ -1,21 +1,65 @@
-!AJUSTAR !LOBBY:
-
-# Links de entrada
-# Links de saidas
-# Fotos referenciais
-# Style
-_____________________________________________________
 !PROJETO !FINAL
 
-Maets Store:
+!Maets !Store
 
-CRUD
+1. Adminitradores:
+ID;
+fk_usuario;
 
-Adminitradores
-Usuarios
-Distribuidora
-Jogos
-Carrinho
-Biblioteca
-=====================
-Eventos - promoçoes
+2. Usuarios:
+ID;
+Nome;
+CPF;
+Email;
+Senha;
+=========
+Bio;
+Idade;
+
+3. Desenvolvedora:
+ID;
+Cnpj;
+Nome;
+============
+country;
+email;
+founded_years;
+
+4. Jogos:
+ID;
+Nome;
+Preco;
+Descricao;
+fk_desenvolvedora
+Idade_cat;
+===================
+genre;
+release_date;
+
+
+5. Carrinho:
+ID;
+fk_usuario;
+================
+status;
+buy_time
+
+
+6. Items:
+ID;
+fk_jogo;
+fk_carrinho;
+================
+add_time
+fk_preco
+
+
+7. Biblioteca:
+id;
+fk_usuario;
+fk_jogo;
+=================
+
+
+------------------------
+Eventos - promoçoes:
