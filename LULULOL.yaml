@@ -1,0 +1,175 @@
+!PROJETO !FINAL
+
+!Maets !Store
+
+Banco de dados:
+
+1. Adminitradores:
+ID;
+fk_usuario;
+
+2. Usuarios:
+ID;
+Nome;
+CPF;
+Email;
+Senha;
+=========
+Bio;
+Foto Perfil
+Idade;
+
+3. Desenvolvedora:
+ID;
+Cnpj;
+Nome;
+============
+Logo;
+country;
+email;
+founded_years;
+
+4. Jogos:
+ID;
+Nome;
+Preco;
+Imagem;
+Descricao;
+fk_desenvolvedora
+Idade_cat;
+================
+genre;
+release_date;
+
+
+5. Carrinho:
+ID;
+fk_usuario;
+status;
+================
+buy_time
+
+
+6. Items:
+ID;
+fk_jogo;
+fk_carrinho;
+fk_biblioteca;
+================
+add_time
+fk_preco
+
+
+7. Biblioteca:
+id;
+fk_usuario;
+fk_itens;
+================
+
+
+Eventos - promoçoes:
+------------------------
+
+
+&TELAS:
+
+#Todos
+&Catalogo
+   - Listar todos os Jogos
+   - Logout
+   - Filtro
+   - Login
+   - Carrinho (Se for usuario) 
+
+&Jogo
+   - Add ao carrinho
+   - Logout
+   - Pegar os dados do jogo em expecifico
+   - Botão Voltar
+
+&LoginGeral
+   - Campo com os dados de login
+   - Botão de logar
+   - Botão Cancelar
+
+&CadastroUsu
+   - Campo com os dados de cadastro usu
+   - Botão de cadastro usu
+   - Botão Cancelar
+
+&CadastroDes
+   - Campo com os dados de cadastro des
+   - Botão de cadastro des
+   - Botão Cancelar
+
+&Logout
+   - Logout e lhe envia para o catalogo
+
+
+
+#Usuario
+&Editar_Usuario
+   - Campo com os dados de editar usu
+   - Botão de editar usu
+   - Botão Cancelar
+
+&Listar_Biblioteca
+   - Listar Biblioteca
+   - Deletar o jogo
+   - Filtro
+
+&Carrinho
+   - Botão Comprar
+   - Botão Remover
+   - Botão Voltar
+   - Valor Total
+
+#Desenvolvedora
+&AddJogo
+   - Campos de adicionar um jogo novo jog
+   - Botão Adicionar
+   - Botão Cancelar
+
+&Biblioteca_Desenvolvedora
+   - Botão Adicionar novo jogo
+   - Editar o jogo
+   - Excluir o jogo
+   - Botão Voltar
+
+&Editar_Jogo
+   - Campos de editar um jogo jog
+   - Botão Editar
+   - Botão Cancelar
+
+&Editar_Desenvolvedora
+   - Campo com os dados de editar des
+   - Botão de editar des
+   - Botão Cancelar
+
+#ADM
+&GerenciarUsuarios
+   &Editar
+   #Excluir
+
+&Editar_Catalogo
+   *Penso_Depois
+
+%AddJogo
+%Biblioteca_Desenvolvedora
+%Editar_Usuario
+%Listar_Biblioteca
+%Editar_Desenvolvedora
+%Listar_Carrinho
+
+ ........................................................
+
+*Dã = Banco de dados & README.md & CSS com @MediasQuery
+*Entony = Conexão com o Banco E Classes
+*Higor = Telas
+
+Processos:
+1. Componentes (div, header, etc) e Funções
+2. Testes
+3. Limpeza de código (campos de verificação, organização visual)
+4. Organização da tela (div, header, etc)
+5. CSS
