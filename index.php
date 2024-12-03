@@ -5,6 +5,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>catalogo de jogos</title>
+     <link rel="stylesheet" href="./css/index.css">
  </head>
 
  <body>
@@ -20,7 +21,7 @@ horror
 </option>
     </select>
 </form>    
-<a href="">logar</a>    
+<a href="login.php">logar</a>    
 </header>
 
 
@@ -28,7 +29,7 @@ horror
 
 <section class="jogos">
 <?php
-$dados ="lista dos jogos";
+$row =["lista","de","jogos"];
 ?>
 <?php while ($row = $dados->fetch(PDO::FETCH_ASSOC)) : ?>
 
@@ -48,9 +49,10 @@ $dados ="lista dos jogos";
 
 
             echo "</div></div>"; ?>
+      <?php endwhile; ?>
 
 </section>
-
+<h1>ousadnpash´sh´sh´sh´sh´sh´shú9dhbaposudbh</h1>
 </main>
 
  </body>
