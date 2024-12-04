@@ -24,7 +24,7 @@ class Biblioteca {
     } 
 
     public function lerJogos($id){
-      $query = "SELECT tb_carrinhos FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'tb_bibliotecas' AND REFERENCED_COLUMN_NAME = 'fkCarrinho' AND idCarrinho = ?";
+      $query = "SELECT tb_itens JOIN tb_carrinho ON tb_itens.fk_carrinho = tb_carrinho.idCarrinho FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'tb_bibliotecas' AND REFERENCED_COLUMN_NAME = 'idBiblioteca' AND tb_carrinhos.status = c";
       $stmt = $this->conn->prepare($query);
       $stmt->execute([$id]);
       return $stmt->fetch(PDO::FETCH_ASSOC);
