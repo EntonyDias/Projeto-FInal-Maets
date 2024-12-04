@@ -1,14 +1,69 @@
+<?php
+
+session_start();
+
+
+include_once './class/Usuario.php';
+include_once './class/Desenvolvedora.php';
+include_once './class/Administrador.php';
+
+$usu = new Usuario($db);
+$des = new Desenvolvedora($db);
+$adm = new Administrador($db);
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['login'])) {
+        // Processar login
+        $email = $_POST['email'];
+        $senha = $_POST['senha'];
+    
+    //usuario
+    if ($dados_adm = $adm->login($email, $senha)) {
+
+        $_SESSION['adm_id'] = $dados_adm['id'];
+
+        header('Location:index.php');
+        exit();
+    } else if ($dados_usuario = $usuario->login($email, $senha)) {
+
+
+        $_SESSION['usuario_id'] = $dados_usuario['id'];
+
+
+        header('Location:index.php');
+
+        exit();
+        //desenvolvedora
+    } else if ($dados_des = $des->login($email, $senha)) {
+        $_SESSION['des_id'] = $dados_des['id'];
+
+
+        header('Location:index.php');
+        exit();
+    }
+    //administrador
+
+}
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link rel="stylesheet" href="./css/login.css">
 </head>
+
 <body>
     <header>
-        <h1>login</h1>
+        <h1>Login</h1>
         <a href="index.php">voltar</a>
     </header>
     <main>
@@ -35,4 +90,5 @@
 
     </main>
 </body>
+
 </html>
