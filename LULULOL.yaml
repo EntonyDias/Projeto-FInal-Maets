@@ -61,7 +61,7 @@ add_time
 fk_preco
 
 
-7. Biblioteca:
+7. Biblioteca: =
 id;
 fk_usuario;
 fk_itens;
@@ -148,6 +148,8 @@ Eventos - promoçoes:
    - Botão Cancelar
 
 #ADM
+&Gerenciar
+
 &GerenciarUsuarios
    &Editar
    #Excluir

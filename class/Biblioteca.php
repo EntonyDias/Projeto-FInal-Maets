@@ -1,0 +1,61 @@
+<?php
+
+class Biblioteca {
+
+    private $conn;
+    private $table_name = "tb_bibliotecas";
+
+    public function __construct($db) {
+        $this->conn = $db;
+    }
+    
+    public function registrar($fk_usuario, $fk_itens) {
+        $query = "INSERT INTO " . $this->table_name . " (fk_usuario, fk_itens) VALUES (?, ?)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$fk_usuario, $fk_itens]);
+        return $stmt;
+    }
+
+    public function ler() { 
+        $query = "SELECT * FROM " . $this->table_name; 
+        $stmt = $this->conn->prepare($query); 
+        $stmt->execute(); 
+        return $stmt; 
+    } 
+
+    public function lerJogos($id){
+      $query = "SELECT tb_carrinhos FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'tb_bibliotecas' AND REFERENCED_COLUMN_NAME = 'fkCarrinho' AND idCarrinho = ?";
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute([$id]);
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function lerPorId($id) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idBiblioteca = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function atualizar($id, $status) {
+        $query = "UPDATE " . $this->table_name . " SET status = ? WHERE idBiblioteca = ?"; 
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$status, $id]);
+        return $stmt; 
+    }
+
+    public function deletar($id) {
+        $query = "DELETE FROM " . $this->table_name . " WHERE idBiblioteca = ?"; 
+        $stmt = $this->conn->prepare($query); 
+        $stmt->execute([$id]); 
+        return $stmt; 
+    }
+
+    public function listarTodos(){
+        $query = "SELECT * FROM ".$this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+}
+}
+?>

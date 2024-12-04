@@ -1,17 +1,17 @@
 <?php
-class Jogo {
+class Item {
     private $conn;
-    private $table_name = "tb_jogos";
+    private $table_name = "tb_itens";
 
 
     public function __construct($db) {
         $this->conn = $db;
     }
     
-    public function registrar($nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "INSERT INTO " . $this->table_name . " (nomeJogo, ImgJogo, descricaoJogo, precoJogo, idadeCategJogo, fk_desenvolvedora) VALUES (?, ?, ?, ?, ?, ?)";
+    public function registrar($fkJogo, $fkCar, $fkBib) {
+        $query = "INSERT INTO " . $this->table_name . " (fk_jogos, fk_carrinho, fk_biblioteca) VALUES ( ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes]);
+        $stmt->execute([$fkJogo, $fkCar, $fkBib]);
         return $stmt;
     }
   
@@ -23,21 +23,21 @@ class Jogo {
     } 
 
     public function lerPorId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE idJogos = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idItens = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizar($id, $nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "UPDATE " . $this->table_name . " SET nomeJogo = ?, ImgJogo = ?, descricaoJogo = ?, precoJogo = ?, idadeCategJogo = ?, fk_desenvolvedora = ?, WHERE idJogo = ?"; 
+    public function atualizar($id, $fkJogo, $fkCar, $fkBib) {
+        $query = "UPDATE " . $this->table_name . " SET fk_jogos = ?, fk_carrinho = ?, fk_biblioteca = ? WHERE idItens = ?"; 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes, $id]);
+        $stmt->execute([$fkJogo, $fkCar, $fkBib, $id]);
         return $stmt; 
     }
 
     public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE idJogos = ?"; 
+        $query = "DELETE FROM " . $this->table_name . " WHERE idItens = ?"; 
         $stmt = $this->conn->prepare($query); 
         $stmt->execute([$id]); 
         return $stmt; 

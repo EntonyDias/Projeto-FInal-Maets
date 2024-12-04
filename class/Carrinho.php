@@ -1,20 +1,21 @@
 <?php
-class Jogo {
-    private $conn;
-    private $table_name = "tb_jogos";
 
+class Carrinho {
+
+    private $conn;
+    private $table_name = "tb_carrinho";
 
     public function __construct($db) {
         $this->conn = $db;
     }
     
-    public function registrar($nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "INSERT INTO " . $this->table_name . " (nomeJogo, ImgJogo, descricaoJogo, precoJogo, idadeCategJogo, fk_desenvolvedora) VALUES (?, ?, ?, ?, ?, ?)";
+    public function registrar($status, $fk_usuario) {
+        $query = "INSERT INTO " . $this->table_name . " (status, fk_usuario) VALUES (?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes]);
+        $stmt->execute([$status, $fk_usuario]);
         return $stmt;
     }
-  
+
     public function ler() { 
         $query = "SELECT * FROM " . $this->table_name; 
         $stmt = $this->conn->prepare($query); 
@@ -22,22 +23,29 @@ class Jogo {
         return $stmt; 
     } 
 
+    public function lerJogos($id){
+      $query = "SELECT tb_itens FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_NAME = 'tb_carrinho' AND REFERENCED_COLUMN_NAME = 'idCarrinho' AND idCarrinho = ?";
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute([$id]);
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function lerPorId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE idJogos = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idCarrinho = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizar($id, $nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "UPDATE " . $this->table_name . " SET nomeJogo = ?, ImgJogo = ?, descricaoJogo = ?, precoJogo = ?, idadeCategJogo = ?, fk_desenvolvedora = ?, WHERE idJogo = ?"; 
+    public function atualizar($id, $status) {
+        $query = "UPDATE " . $this->table_name . " SET status = ? WHERE idCarrinho = ?"; 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes, $id]);
+        $stmt->execute([$status, $id]);
         return $stmt; 
     }
 
     public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE idJogos = ?"; 
+        $query = "DELETE FROM " . $this->table_name . " WHERE idCarrinho = ?"; 
         $stmt = $this->conn->prepare($query); 
         $stmt->execute([$id]); 
         return $stmt; 
