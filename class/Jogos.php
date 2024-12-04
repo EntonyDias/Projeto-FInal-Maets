@@ -1,15 +1,15 @@
 <?php
-class Usuario {
+class Jogos {
     private $conn;
-    private $table_name = "tb_usuarios";
+    private $table_name = "tb_jogos";
 
 
     public function __construct($db) {
         $this->conn = $db;
     }
     
-    public function registrar($nome, $cpf, $email, $senha) {
-        $query = "INSERT INTO " . $this->table_name . " (nomeUsu, cpfUsu, emailUsu, senhaUsu) VALUES (?, ?, ?, ?)";
+    public function registrar($nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
+        $query = "INSERT INTO " . $this->table_name . " (nomeJogo, ImgJogo, descricaoJogo, precoJogo, idadeCategJogo, fk_desenvolvedora) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
         $stmt->execute([$nome, $cpf, $email, $hashed_password]);

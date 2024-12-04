@@ -1,28 +1,30 @@
 <?php
-class Usuario {
+class Administrador {
     private $conn;
-    private $table_name = "tb_usuarios";
+    private $table_name = "tb_administradores";
+    private $table_fk = "tb_usuarios";
 
 
     public function __construct($db) {
         $this->conn = $db;
     }
     
-    public function registrar($nome, $cpf, $email, $senha) {
-        $query = "INSERT INTO " . $this->table_name . " (nomeUsu, cpfUsu, emailUsu, senhaUsu) VALUES (?, ?, ?, ?)";
+    public function registrar($fk_usuario) {
+        $query = "INSERT INTO " . $this->table_name . " (fk_usuario) VALUES (?)";
         $stmt = $this->conn->prepare($query);
-        $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
-        $stmt->execute([$nome, $cpf, $email, $hashed_password]);
+        $stmt->execute([$fk_usuario]);
         return $stmt;
     }
 
     public function login($email, $senha) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE emailUsu = ?";
+        $query = "SELECT * FROM " . $this->table_name .
+        " JOIN ". $this->table_name.".fk_usuario ON = " . $this->table_fk.".idUsuario
+        WHERE email = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($usuario && password_verify($senha, $usuario['senhaUsu'])) {
-            return $usuario;
+        $administrador = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($administrador && password_verify($senha, $administrador['senhaUsu'])) {
+            return $administrador;
         }
         return false;
     }
@@ -42,7 +44,9 @@ class Usuario {
     }
 
     public function atualizar($id, $nome, $cpf, $email, $senha) {
-        $query = "UPDATE " . $this->table_name . " SET nomeUsu = ?, cpfUsu = ?, emailUsu = ?, senhaUsu = ? WHERE idUsuario = ?"; 
+        $query = "UPDATE " . $this->table_name .
+        " JOIN ". $this->table_name.".fk_usuario ON = ".$this->table_fk.".idUsuario
+        SET nomeUsu = ?, cpfUsu = ?, emailUsu = ?, senhaUsu = ? WHERE idUsuario = ?"; 
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$nome, $cpf, $email, $senha, $id]);
         return $stmt; 
@@ -56,10 +60,10 @@ class Usuario {
     }
 
     public function listarTodos(){
-        $query = "SELECT * FROM ".$this->table_name;
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
-}
+            $query = "SELECT * FROM ".$this->table_name;
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll (PDO::FETCH_ASSOC);
+    }
 }
 ?>

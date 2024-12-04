@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/12/2024 às 02:07
+-- Tempo de geração: 04/12/2024 às 00:14
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_administrador`
+-- Estrutura para tabela `tb_administradores`
 --
 
-CREATE TABLE `tb_administrador` (
+CREATE TABLE `tb_administradores` (
   `idAdm` int(11) NOT NULL,
   `fk_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -35,10 +35,10 @@ CREATE TABLE `tb_administrador` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_biblioteca`
+-- Estrutura para tabela `tb_bibliotecas`
 --
 
-CREATE TABLE `tb_biblioteca` (
+CREATE TABLE `tb_bibliotecas` (
   `idBiblioteca` int(11) NOT NULL,
   `fk_usuario` int(11) NOT NULL,
   `fk_itens` int(11) NOT NULL
@@ -47,10 +47,10 @@ CREATE TABLE `tb_biblioteca` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_carrino`
+-- Estrutura para tabela `tb_carrinhos`
 --
 
-CREATE TABLE `tb_carrino` (
+CREATE TABLE `tb_carrinhos` (
   `idCarrinho` int(11) NOT NULL,
   `status` char(1) NOT NULL,
   `fk_usuario` int(11) NOT NULL
@@ -59,13 +59,15 @@ CREATE TABLE `tb_carrino` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tb_desenvolvedor`
+-- Estrutura para tabela `tb_desenvolvedoras`
 --
 
-CREATE TABLE `tb_desenvolvedor` (
+CREATE TABLE `tb_desenvolvedoras` (
   `idDes` int(11) NOT NULL,
   `cnpjDes` varchar(18) NOT NULL,
-  `nomeDes` varchar(255) NOT NULL
+  `nomeDes` varchar(255) NOT NULL,
+  `emailDesenvolvedora` varchar(255) NOT NULL,
+  `senhaDesenvolvedora` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -116,31 +118,31 @@ CREATE TABLE `tb_usuarios` (
 --
 
 --
--- Índices de tabela `tb_administrador`
+-- Índices de tabela `tb_administradores`
 --
-ALTER TABLE `tb_administrador`
+ALTER TABLE `tb_administradores`
   ADD PRIMARY KEY (`idAdm`),
   ADD KEY `fk_usuario` (`fk_usuario`);
 
 --
--- Índices de tabela `tb_biblioteca`
+-- Índices de tabela `tb_bibliotecas`
 --
-ALTER TABLE `tb_biblioteca`
+ALTER TABLE `tb_bibliotecas`
   ADD PRIMARY KEY (`idBiblioteca`),
   ADD KEY `fk_usuario` (`fk_usuario`),
   ADD KEY `fk_itens` (`fk_itens`);
 
 --
--- Índices de tabela `tb_carrino`
+-- Índices de tabela `tb_carrinhos`
 --
-ALTER TABLE `tb_carrino`
+ALTER TABLE `tb_carrinhos`
   ADD PRIMARY KEY (`idCarrinho`),
   ADD KEY `fk_usuario` (`fk_usuario`);
 
 --
--- Índices de tabela `tb_desenvolvedor`
+-- Índices de tabela `tb_desenvolvedoras`
 --
-ALTER TABLE `tb_desenvolvedor`
+ALTER TABLE `tb_desenvolvedoras`
   ADD PRIMARY KEY (`idDes`);
 
 --
@@ -170,27 +172,27 @@ ALTER TABLE `tb_usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `tb_administrador`
+-- AUTO_INCREMENT de tabela `tb_administradores`
 --
-ALTER TABLE `tb_administrador`
+ALTER TABLE `tb_administradores`
   MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tb_biblioteca`
+-- AUTO_INCREMENT de tabela `tb_bibliotecas`
 --
-ALTER TABLE `tb_biblioteca`
+ALTER TABLE `tb_bibliotecas`
   MODIFY `idBiblioteca` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tb_carrino`
+-- AUTO_INCREMENT de tabela `tb_carrinhos`
 --
-ALTER TABLE `tb_carrino`
+ALTER TABLE `tb_carrinhos`
   MODIFY `idCarrinho` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `tb_desenvolvedor`
+-- AUTO_INCREMENT de tabela `tb_desenvolvedoras`
 --
-ALTER TABLE `tb_desenvolvedor`
+ALTER TABLE `tb_desenvolvedoras`
   MODIFY `idDes` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -216,37 +218,37 @@ ALTER TABLE `tb_usuarios`
 --
 
 --
--- Restrições para tabelas `tb_administrador`
+-- Restrições para tabelas `tb_administradores`
 --
-ALTER TABLE `tb_administrador`
-  ADD CONSTRAINT `tb_administrador_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`);
+ALTER TABLE `tb_administradores`
+  ADD CONSTRAINT `tb_administradores_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`);
 
 --
--- Restrições para tabelas `tb_biblioteca`
+-- Restrições para tabelas `tb_bibliotecas`
 --
-ALTER TABLE `tb_biblioteca`
-  ADD CONSTRAINT `tb_biblioteca_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`),
-  ADD CONSTRAINT `tb_biblioteca_ibfk_2` FOREIGN KEY (`fk_itens`) REFERENCES `tb_itens` (`idItens`);
+ALTER TABLE `tb_bibliotecas`
+  ADD CONSTRAINT `tb_bibliotecas_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`),
+  ADD CONSTRAINT `tb_bibliotecas_ibfk_2` FOREIGN KEY (`fk_itens`) REFERENCES `tb_itens` (`idItens`);
 
 --
--- Restrições para tabelas `tb_carrino`
+-- Restrições para tabelas `tb_carrinhos`
 --
-ALTER TABLE `tb_carrino`
-  ADD CONSTRAINT `tb_carrino_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`);
+ALTER TABLE `tb_carrinhos`
+  ADD CONSTRAINT `tb_carrinhos_ibfk_1` FOREIGN KEY (`fk_usuario`) REFERENCES `tb_usuarios` (`idUsuario`);
 
 --
 -- Restrições para tabelas `tb_itens`
 --
 ALTER TABLE `tb_itens`
   ADD CONSTRAINT `tb_itens_ibfk_1` FOREIGN KEY (`fk_jogos`) REFERENCES `tb_jogos` (`idJogos`),
-  ADD CONSTRAINT `tb_itens_ibfk_2` FOREIGN KEY (`fk_carrinho`) REFERENCES `tb_carrino` (`idCarrinho`),
-  ADD CONSTRAINT `tb_itens_ibfk_3` FOREIGN KEY (`fk_biblioteca`) REFERENCES `tb_biblioteca` (`idBiblioteca`);
+  ADD CONSTRAINT `tb_itens_ibfk_2` FOREIGN KEY (`fk_carrinho`) REFERENCES `tb_carrinhos` (`idCarrinho`),
+  ADD CONSTRAINT `tb_itens_ibfk_3` FOREIGN KEY (`fk_biblioteca`) REFERENCES `tb_bibliotecas` (`idBiblioteca`);
 
 --
 -- Restrições para tabelas `tb_jogos`
 --
 ALTER TABLE `tb_jogos`
-  ADD CONSTRAINT `tb_jogos_ibfk_1` FOREIGN KEY (`fk_desenvolvedora`) REFERENCES `tb_desenvolvedor` (`idDes`);
+  ADD CONSTRAINT `tb_jogos_ibfk_1` FOREIGN KEY (`fk_desenvolvedora`) REFERENCES `tb_desenvolvedoras` (`idDes`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

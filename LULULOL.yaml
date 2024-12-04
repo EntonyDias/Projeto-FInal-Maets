@@ -23,10 +23,11 @@ Idade;
 ID;
 Cnpj;
 Nome;
+Email;
+Senha;
 ============
 Logo;
 country;
-email;
 founded_years;
 
 4. Jogos:
