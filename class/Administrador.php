@@ -16,9 +16,12 @@ class Administrador {
         return $stmt;
     }
 
+//SELECT * FROM tb_administradores
+//JOIN tb_usuarios ON tb_administradores.fk_usuario = tb_usuarios.idUsuario WHERE emailUsu = 'lily@lily';
+
     public function login($email, $senha) {
         $query = "SELECT * FROM " . $this->table_name .
-        " JOIN ". $this->table_name.".fk_usuario ON = " . $this->table_fk.".idUsuario
+        " JOIN ". $this->table_fk . " ON " .  $this->table_name.".fk_usuario = " . $this->table_fk.".idUsuario
         WHERE emailUsu = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
