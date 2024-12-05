@@ -3,16 +3,17 @@ session_start();
 
 $logado = null;
 
-if (!isset($_SESSION['adm'])) {
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
-   exit;
-} else if (!isset($_SESSION['usu'])) {
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
-   exit;
-} else if (!isset($_SESSION['des'])) {
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
+if (isset($_SESSION['adm'])) {
+   $logado = $_SESSION['adm'];
+
+} else if (isset($_SESSION['usu'])) {
+   $logado = $_SESSION['usu'];
+   
+} else if (isset($_SESSION['des'])) {
+   $logado = $_SESSION['adm'];
 }
 
+var_dump($logado);
 
 /*
 switch($logado)

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location:index.php');
         exit();
         //usuario
-    } else if ($dados_usuario = $usuario->login($email, $senha)) {
+    } else if ($dados_usuario = $usu->login($email, $senha)) {
 
 
         $_SESSION['usu'] = $dados_usuario['idUsuario'];
