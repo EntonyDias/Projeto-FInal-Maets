@@ -1,6 +1,7 @@
 <?php
 
 include_once './class/Usuario.php';
+include_once './db/config.php';
 
 //e so ler que tu entende
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

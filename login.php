@@ -4,6 +4,7 @@ session_start();
 
 
 include_once './class/Usuario.php';
+include_once './db/config.php';
 include_once './class/Desenvolvedora.php';
 include_once './class/Administrador.php';
 
@@ -20,17 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     
-    //usuario
+    //adm
     if ($dados_adm = $adm->login($email, $senha)) {
 
-        $_SESSION['adm_id'] = $dados_adm['id'];
+        $_SESSION['adm'] = $dados_adm['idAdm'];
 
         header('Location:index.php');
         exit();
+        //usuario
     } else if ($dados_usuario = $usuario->login($email, $senha)) {
 
 
-        $_SESSION['usuario_id'] = $dados_usuario['id'];
+        $_SESSION['usu'] = $dados_usuario['idUsuario'];
 
 
         header('Location:index.php');
@@ -38,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
         //desenvolvedora
     } else if ($dados_des = $des->login($email, $senha)) {
-        $_SESSION['des_id'] = $dados_des['id'];
+        $_SESSION['des'] = $dados_des['idDes'];
 
 
-        header('Location:index.php');
+        header('Location:desenvolvedora/desenvedolvedora.php');
         exit();
     }
-    //administrador
+  
 
 }
 }

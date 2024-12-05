@@ -19,7 +19,7 @@ class Administrador {
     public function login($email, $senha) {
         $query = "SELECT * FROM " . $this->table_name .
         " JOIN ". $this->table_name.".fk_usuario ON = " . $this->table_fk.".idUsuario
-        WHERE email = ?";
+        WHERE emailUsu = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
         $administrador = $stmt->fetch(PDO::FETCH_ASSOC);
