@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //adm
     if ($dados_adm = $adm->login($email, $senha)) {
 
-        $_SESSION['adm'] = $dados_adm['idAdm'];
+        $_SESSION['adm'] = $dados_adm;
 
         header('Location:index.php');
         exit();
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if ($dados_usuario = $usu->login($email, $senha)) {
 
 
-        $_SESSION['usu'] = $dados_usuario['idUsuario'];
+        $_SESSION['usu'] = $dados_usuario;
 
 
         header('Location:index.php');
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
         //desenvolvedora
     } else if ($dados_des = $des->login($email, $senha)) {
-        $_SESSION['des'] = $dados_des['idDes'];
+        $_SESSION['des'] = $dados_des;
 
 
         header('Location:desenvolvedora/desenvedolvedora.php');

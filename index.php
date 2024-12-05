@@ -3,25 +3,26 @@
     session_start();
     include_once './class/Usuario.php';
 
-    $logado = null;
+    $logado = "null";
 
-    if (isset($_session['adm'])) {
+    if (isset($_SESSION['adm'])) {
         $logado = "adm";
-        header('Location:index.php');
-        exit();
-        //usuario
-    } else if (isset($_session['des'])) {
-
-        header('Location:desenvolvedora/desenvolvedora.php');
         
-        exit();
+        //usuario
+    } 
+    else if (isset($_SESSION['des'])) {
+        var_dump($logado);
+
+      
+        
+      
         //desenvolvedora
-    } else if (isset($_session['usu'])) {
+    } 
+    else if (isset($_SESSION['usu'])) {
+    $logado = "usu";
 
-        $logado = "usu";
-
-        header('Location:index.php');
-        exit();
+    
+      
     }
 
 
@@ -41,7 +42,7 @@
 
  <body>
      <header>
-         <h1>maets</h1>
+         <h1>maets </h1>
          <div>
              <?php
                 switch ($logado) {
