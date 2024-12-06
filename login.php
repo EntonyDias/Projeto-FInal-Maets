@@ -21,40 +21,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'];
         $senha = $_POST['senha'];
     
-    //adm
+        //adm
     if ($dados_adm = $adm->login($email, $senha)) {
 
         $_SESSION['adm'] = $dados_adm;
 
         header('Location:index.php');
         exit();
+
         //usuario
     } else if ($dados_usuario = $usu->login($email, $senha)) {
 
-
         $_SESSION['usu'] = $dados_usuario;
 
-
         header('Location:index.php');
-
         exit();
+
         //desenvolvedora
     } else if ($dados_des = $des->login($email, $senha)) {
+
         $_SESSION['des'] = $dados_des;
 
-
-        header('Location:desenvolvedora/desenvedolvedora.php');
+        header('Location:./desenvolvedora/gerenciarDes.php');
         exit();
     }
   
-
 }
+var_dump($dados_des);
 }
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">

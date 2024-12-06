@@ -38,8 +38,8 @@ Imagem;
 Descricao;
 fk_desenvolvedora
 Idade_cat;
+Categoria;
 ================
-genre;
 release_date;
 
 

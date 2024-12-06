@@ -1,14 +1,17 @@
 <?php
-class Usuario {
+class Usuario
+{
     private $conn;
     private $table_name = "tb_usuarios";
 
 
-    public function __construct($db) {
+    public function __construct($db)
+    {
         $this->conn = $db;
     }
-    
-    public function registrar($nome, $cpf, $email, $senha) {
+
+    public function registrar($nome, $cpf, $email, $senha)
+    {
         $query = "INSERT INTO " . $this->table_name . " (nomeUsu, cpfUsu, emailUsu, senhaUsu) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
@@ -16,7 +19,8 @@ class Usuario {
         return $stmt;
     }
 
-    public function login($email, $senha) {
+    public function login($email, $senha)
+    {
         $query = "SELECT * FROM " . $this->table_name . " WHERE emailUsu = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$email]);
@@ -26,40 +30,44 @@ class Usuario {
         }
         return false;
     }
-  
-    public function ler() { 
-        $query = "SELECT * FROM " . $this->table_name; 
-        $stmt = $this->conn->prepare($query); 
-        $stmt->execute(); 
-        return $stmt; 
-    } 
 
-    public function lerPorId($id) {
+    public function ler()
+    {
+        $query = "SELECT * FROM " . $this->table_name;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+
+    public function lerPorId($id)
+    {
         $query = "SELECT * FROM " . $this->table_name . " WHERE idUsuario = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizar($id, $nome, $cpf, $email, $senha) {
-        $query = "UPDATE " . $this->table_name . " SET nomeUsu = ?, cpfUsu = ?, emailUsu = ?, senhaUsu = ? WHERE idUsuario = ?"; 
+    public function atualizar($id, $nome, $cpf, $email, $senha)
+    {
+        $query = "UPDATE " . $this->table_name . " SET nomeUsu = ?, cpfUsu = ?, emailUsu = ?, senhaUsu = ? WHERE idUsuario = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$nome, $cpf, $email, $senha, $id]);
-        return $stmt; 
+        return $stmt;
     }
 
-    public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE idUsuario = ?"; 
-        $stmt = $this->conn->prepare($query); 
-        $stmt->execute([$id]); 
-        return $stmt; 
+    public function deletar($id)
+    {
+        $query = "DELETE FROM " . $this->table_name . " WHERE idUsuario = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt;
     }
 
-    public function listarTodos(){
-        $query = "SELECT * FROM ".$this->table_name;
+    public function listarTodos()
+    {
+        $query = "SELECT * FROM " . $this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
-}
-?>

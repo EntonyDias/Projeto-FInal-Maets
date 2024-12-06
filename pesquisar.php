@@ -1,6 +1,11 @@
 <?PHP
 session_start();
 
+include_once "./db/config.php";
+include_once "./class/Jogos.php";
+
+$jogosDB = new Jogo($db);
+
 $logado = null;
 
 if (isset($_SESSION['adm'])) {
@@ -10,23 +15,34 @@ if (isset($_SESSION['adm'])) {
    $logado = $_SESSION['usu'];
    
 } else if (isset($_SESSION['des'])) {
-   $logado = $_SESSION['adm'];
+   $logado = $_SESSION['des'];
 }
 
-var_dump($logado);
 
-/*
-switch($logado)
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+   $pesquisa = $_POST['txtPesquisa'];
+   $jogos = null;
 
-case "": (!isset($_SESSION['adm'])){
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
-   exit;
-} else if (!isset($_SESSION['usu'])){
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
-   exit;
-} else if (!isset($_SESSION['des'])){
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
-} */
+   if ($pesquisa == "" || $pesquisa == " "){
+      $jogos = $jogosDB->listarTodos();
+   } else {
+      $jogos = $jogosDB->pesquisarNome($pesquisa);
+   }
+}
+
+if (isset($_SESSION['adm'])) {
+   echo "<button type='button'><a href='login.php'>Logara</a></button>";
+
+} else if (isset($_SESSION['usu'])) {
+   echo "<button type='button'><a href='login.php'>Logaru</a></button>";
+
+} else if (isset($_SESSION['des'])) {
+   echo "<button type='button'><a href='login.php'>Logard</a></button>";
+
+} else {echo "<button type='button'><a href='login.php'>Logar</a></button>";}
+
+
+
 
 ?>
 

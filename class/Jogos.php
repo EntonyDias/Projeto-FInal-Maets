@@ -8,10 +8,10 @@ class Jogo {
         $this->conn = $db;
     }
     
-    public function registrar($nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "INSERT INTO " . $this->table_name . " (nomeJogo, ImgJogo, descricaoJogo, precoJogo, idadeCategJogo, fk_desenvolvedora) VALUES (?, ?, ?, ?, ?, ?)";
+    public function registrar($nome, $img, $descricao, $preco, $idadeCat, $fkDes, $cat) {
+        $query = "INSERT INTO " . $this->table_name . " (nomeJogo, ImgJogo, descricaoJogo, precoJogo, idadeCategJogo, fk_desenvolvedora, categoriaJogo) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes]);
+        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes, $cat]);
         return $stmt;
     }
   
@@ -23,21 +23,21 @@ class Jogo {
     } 
 
     public function lerPorId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE idJogos = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idJogo = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizar($id, $nome, $img, $descricao, $preco, $idadeCat, $fkDes) {
-        $query = "UPDATE " . $this->table_name . " SET nomeJogo = ?, ImgJogo = ?, descricaoJogo = ?, precoJogo = ?, idadeCategJogo = ?, fk_desenvolvedora = ?, WHERE idJogo = ?"; 
+    public function atualizar($id, $nome, $img, $descricao, $preco, $idadeCat, $fkDes, $cat) {
+        $query = "UPDATE " . $this->table_name . " SET nomeJogo = ?, ImgJogo = ?, descricaoJogo = ?, precoJogo = ?, idadeCategJogo = ?, fk_desenvolvedora = ?, categoriaJogo = ? WHERE idJogo = ?"; 
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes, $id]);
+        $stmt->execute([$nome, $img, $descricao, $preco, $idadeCat, $fkDes, $cat, $id]);
         return $stmt; 
     }
 
     public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE idJogos = ?"; 
+        $query = "DELETE FROM " . $this->table_name . " WHERE idJogo = ?"; 
         $stmt = $this->conn->prepare($query); 
         $stmt->execute([$id]); 
         return $stmt; 
@@ -48,6 +48,28 @@ class Jogo {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll (PDO::FETCH_ASSOC);
-}
+    }
+
+    public function pesquisarNome($nome){
+        $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+    }
+
+    public function pesquisarCatalogo($cat){
+        $query = "SELECT * FROM ". $this->table_name ." WHERE categoriaJogo = ".$cat;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+    }
+
+    public function pesquisarNomeECatalogo($nome, $cat){
+        $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%' AND categoriaJogo = ".$cat;
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+    }
+
 }
 ?>

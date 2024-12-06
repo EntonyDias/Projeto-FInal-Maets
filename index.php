@@ -1,28 +1,24 @@
  <?php
 
     session_start();
+    include_once './db/config.php';
     include_once './class/Usuario.php';
+    include_once './class/Desenvolvedora.php';
+    include_once './class/Administrador.php';
+
 
     $logado = "null";
 
     if (isset($_SESSION['adm'])) {
-        $logado = "adm";
-        
+        $logado = $_SESSION['adm'];
+
         //usuario
-    } 
-    else if (isset($_SESSION['des'])) {
-        var_dump($logado);
+    } else if (isset($_SESSION['des'])) {
+        $logado = $_SESSION['des'];
 
-      
-        
-      
         //desenvolvedora
-    } 
-    else if (isset($_SESSION['usu'])) {
-    $logado = "usu";
-
-    
-      
+    } else if (isset($_SESSION['usu'])) {
+        $logado = $_SESSION['usu'];
     }
 
 
@@ -30,7 +26,7 @@
     ?>
 
  <!DOCTYPE html>
- <html lang="en">
+ <html lang="pt-br">
 
  <head>
      <meta charset="UTF-8">
@@ -49,33 +45,30 @@
                     case "adm":
                         echo "
                         <form action='pesquisar.php'' method='post'>
-            
-                        <input type='text' placeholder='pesquise'>
-                       <button type='submit'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                    </form>";
+                            <input type='text' placeholder='pesquise' name='txtPesquisa'>
+                            <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
+                        </form>";
 
-                        echo " <a href='carrinho.php'>   <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+                        echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
                         break;
 
                     case "usu":
                         echo "
-                    <form action='pesquisar.php'' method='post'>
-        
-                    <input type='text' placeholder='pesquise'>
-                   <button type='submit'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                </form>";
+                        <form action='pesquisar.php'' method='post'>
+                            <input type='text' placeholder='pesquise' name='txtPesquisa'>
+                            <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
+                        </form>";
 
-                        echo " <a href='carrinho.php'>   <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+                        echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
                         break;
 
-
                     default:
-
-
                         echo "<form action='pesquisar.php'' method='post'>
-                    <input type='text' placeholder='pesquise'>
-                   <button type='submit'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                </form>";
+                                <input type='text' placeholder='pesquise' name='txtPesquisa'>
+                                <button type='submit' name='btnPesquisar'>      <img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
+                            </form>";
+                            
+
                         echo "<a href='login.php'>login</a>";
                         break;
                 }
@@ -90,14 +83,13 @@
                         echo "<a href='centrarAdm.php'>central de controle</a>";
                         echo "<a href='altConta.php'>editar conta</a>";
                         break;
-                        
-                        case "usu":
-                            
-                            echo "<a href='altConta.php'>editar conta</a>";
+
+                    case "usu":
+
+                        echo "<a href='altConta.php'>editar conta</a>";
                         echo "<a href='logout.php'>logout</a>";
 
                         break;
-
 
 
                     default:

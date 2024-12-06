@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04/12/2024 às 00:14
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Tempo de geração: 06/12/2024 às 02:28
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,8 +66,8 @@ CREATE TABLE `tb_desenvolvedoras` (
   `idDes` int(11) NOT NULL,
   `cnpjDes` varchar(18) NOT NULL,
   `nomeDes` varchar(255) NOT NULL,
-  `emailDesenvolvedora` varchar(255) NOT NULL,
-  `senhaDesenvolvedora` text NOT NULL
+  `emailDes` varchar(255) NOT NULL,
+  `senhaDes` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -90,13 +90,14 @@ CREATE TABLE `tb_itens` (
 --
 
 CREATE TABLE `tb_jogos` (
-  `idJogos` int(11) NOT NULL,
+  `idJogo` int(11) NOT NULL,
   `nomeJogo` varchar(255) NOT NULL,
   `ImgJogo` varchar(255) NOT NULL,
   `descricaoJogo` text NOT NULL,
   `precoJogo` float NOT NULL,
   `idadeCategJogo` int(11) NOT NULL,
-  `fk_desenvolvedora` int(11) NOT NULL
+  `fk_desenvolvedora` int(11) NOT NULL,
+  `categoriaJogo` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -143,7 +144,10 @@ ALTER TABLE `tb_carrinhos`
 -- Índices de tabela `tb_desenvolvedoras`
 --
 ALTER TABLE `tb_desenvolvedoras`
-  ADD PRIMARY KEY (`idDes`);
+  ADD PRIMARY KEY (`idDes`),
+  ADD UNIQUE KEY `emailDes` (`emailDes`),
+  ADD UNIQUE KEY `nomeDes` (`nomeDes`),
+  ADD UNIQUE KEY `cnpjDes` (`cnpjDes`);
 
 --
 -- Índices de tabela `tb_itens`
@@ -158,14 +162,17 @@ ALTER TABLE `tb_itens`
 -- Índices de tabela `tb_jogos`
 --
 ALTER TABLE `tb_jogos`
-  ADD PRIMARY KEY (`idJogos`),
+  ADD PRIMARY KEY (`idJogo`),
+  ADD UNIQUE KEY `nomeJogo` (`nomeJogo`),
   ADD KEY `fk_desenvolvedora` (`fk_desenvolvedora`);
 
 --
 -- Índices de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `cpfUsu` (`cpfUsu`),
+  ADD UNIQUE KEY `emailUsu` (`emailUsu`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -175,7 +182,7 @@ ALTER TABLE `tb_usuarios`
 -- AUTO_INCREMENT de tabela `tb_administradores`
 --
 ALTER TABLE `tb_administradores`
-  MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `tb_bibliotecas`
@@ -193,7 +200,7 @@ ALTER TABLE `tb_carrinhos`
 -- AUTO_INCREMENT de tabela `tb_desenvolvedoras`
 --
 ALTER TABLE `tb_desenvolvedoras`
-  MODIFY `idDes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tb_itens`
@@ -205,13 +212,13 @@ ALTER TABLE `tb_itens`
 -- AUTO_INCREMENT de tabela `tb_jogos`
 --
 ALTER TABLE `tb_jogos`
-  MODIFY `idJogos` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idJogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para tabelas despejadas
@@ -240,7 +247,7 @@ ALTER TABLE `tb_carrinhos`
 -- Restrições para tabelas `tb_itens`
 --
 ALTER TABLE `tb_itens`
-  ADD CONSTRAINT `tb_itens_ibfk_1` FOREIGN KEY (`fk_jogos`) REFERENCES `tb_jogos` (`idJogos`),
+  ADD CONSTRAINT `tb_itens_ibfk_1` FOREIGN KEY (`fk_jogos`) REFERENCES `tb_jogos` (`idJogo`),
   ADD CONSTRAINT `tb_itens_ibfk_2` FOREIGN KEY (`fk_carrinho`) REFERENCES `tb_carrinhos` (`idCarrinho`),
   ADD CONSTRAINT `tb_itens_ibfk_3` FOREIGN KEY (`fk_biblioteca`) REFERENCES `tb_bibliotecas` (`idBiblioteca`);
 

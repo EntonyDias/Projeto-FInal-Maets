@@ -21,6 +21,5 @@
          } 
          return $this->conn; 
      }
-
    }
 ?>
