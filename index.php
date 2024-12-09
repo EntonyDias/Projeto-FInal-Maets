@@ -42,7 +42,7 @@
          <div>
              <?php
                 switch ($logado) {
-                    case "adm":
+                    case isset($_SESSION['adm']):
                         echo "
                         <form action='pesquisar.php'' method='post'>
                             <input type='text' placeholder='pesquise' name='txtPesquisa'>
@@ -52,7 +52,7 @@
                         echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
                         break;
 
-                    case "usu":
+                    case isset($_SESSION['usu']):
                         echo "
                         <form action='pesquisar.php'' method='post'>
                             <input type='text' placeholder='pesquise' name='txtPesquisa'>
@@ -78,13 +78,13 @@
          <div class="menu" id="menu">
              <?php
                 switch ($logado) {
-                    case "adm":
+                    case isset($_SESSION['adm']):
                         echo "<a href='logout.php'>logout</a>";
-                        echo "<a href='centrarAdm.php'>central de controle</a>";
+                        echo "<a href='./adm/centralAdm.php'>central de controle</a>";
                         echo "<a href='altConta.php'>editar conta</a>";
                         break;
 
-                    case "usu":
+                    case isset($_SESSION['usu']):
 
                         echo "<a href='altConta.php'>editar conta</a>";
                         echo "<a href='logout.php'>logout</a>";
