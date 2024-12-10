@@ -1,68 +1,119 @@
-*{
-
-    margin: 0;
-}
-header a{
-    text-decoration: none;
-    color:aliceblue;
-    background-color: gray;
-    padding: 10px;
-    border-radius: 30px;
-}
-
-input {
-    padding: 10px;
-}
-
-
-a {
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 30px;
-}
-
-#button {
-    color: white;
-    background-color: black;
-    border-radius: 30px;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-
-
-form {
-
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-main img {
-
-    margin-bottom: 20px;
-    border-radius: 100%;
-    height: 200px;
-    width: 200px;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-header{
-    color: aliceblue;
+header {
+    color: rgb(255, 255, 255);
     display: flex;
     padding: 10px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     align-items: center;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+}
+
+#logo{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+header button:hover {
+    cursor: pointer;
+}
+
+header button {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+
+}
+
+header a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+
+}
+header input {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+
+}
+
+img {
+    height: 30px;
+    width: 30px;
+
+}
+
+form button img {
+    height: 30px;
+}
+
+form {
+    gap: 10px;
+    font-size: 30px;
+    display: flex;
+}
+
+form button {
+
+    background-color: aliceblue;
+    border-radius: 100px;
+}
+
+.menu button {
+
+    padding: 10px;
+    font-size: 20px;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(25, 25, 25);
+    color: rgb(0, 0, 0);
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo quando o menu está ativo */
+.menu.active {
+    transform: translateX(0);
+}
+
+/* Estilo dos links do menu */
+
+.menu a {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    border: 5px solid rgb(98, 0, 128);
+    text-decoration: none;
+    font-size: 24px;
+    margin: 10px 0;
 }
