@@ -1,16 +1,14 @@
 <?PHP
 session_start();
-include_once './db/config.php';
-include_once './class/Administrador.php';
-include_once './class/Desenvolvedora.php';
+include_once '../db/config.php';
 
-$logado = null;
+include_once '../class/Desenvolvedora.php';
 
-if (isset($_SESSION['adm'])) {
-   $logado = $_SESSION['adm'];
 
-} else if (isset($_SESSION['des'])) {
-   $logado = $_SESSION['des'];
+
+if (!isset($_SESSION['des'])) {
+   header('Location: index.php');
+   exit();
 }
 
 ?>
@@ -29,7 +27,7 @@ if (isset($_SESSION['adm'])) {
    </header>
 
    <main>
-      <button type="button"></button>
+   
    </main>
 
 </body>

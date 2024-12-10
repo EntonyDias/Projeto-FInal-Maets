@@ -17,3 +17,45 @@ header div {
         flex-direction: row;
         justify-content: space-between
     }
+    table td{
+        padding: 10px;
+    }
+    table {
+        text-align: center;
+        margin-top: 50px;
+        
+        font-size: 20px;
+        background-color: black;
+        color: white;
+        border-color: #ffffff38;
+    }
+
+    #links {
+        gap: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    #links a {
+        text-align: center;
+        width: 100px;
+        background-color: white;
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 30px;
+
+    }
+
+    table img {
+        margin-left: 10px;
+        border: 3px solid white;
+        border-radius: 100%;
+        width: 50px;
+        height: 50px;
+
+
+    }

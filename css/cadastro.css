@@ -5,7 +5,11 @@
 body {
     background-color: white;
 }
-
+#cargo{
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+}
 header {
     margin-bottom: 50px;
     text-align: center;
@@ -28,6 +32,7 @@ header {
 
         form input {
             padding: 10px;
+            text-align: center;
         }
 
         main {
@@ -65,6 +70,10 @@ header {
     }
 
     @media screen and (max-width: 768px) {
+        #cargo{
+            border: 2px solid black;
+            
+        }
         a {
             background-color: black;
             color: white;
