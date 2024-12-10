@@ -117,13 +117,13 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                  <td><?php echo $admInfo['cpfUsu'] ?></td>
                  <td><?php echo $admInfo['emailUsu']; ?></td>
                  <td>
-                     <a href="deletar.php?id=<?php echo $row['idAdm']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
-                     <a href="editar.php?id=<?php echo $row['idAdm']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                     <a href="deletar.php?cargo='adm'&id=<?php echo $row['idAdm']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
+                     <a href="editar.php?cargo='adm'&id=<?php echo $row['idAdm']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
                  </td>
              </tr>
          <?php endwhile; ?>
      </table>
-     <h1>gerenciamento de administradores</h1>
+     <h1>gerenciamento de Desenvolvedoras</h1>
  
 
      <table border="1">
@@ -131,12 +131,12 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                
             <tr>
 
-                 <td><?php echo $admInfo['nomeUsu']; ?></td>
-                 <td><?php echo $admInfo['cpfUsu'] ?></td>
-                 <td><?php echo $admInfo['emailUsu']; ?></td>
+                 <td><?php echo $row['nomeDes']; ?></td>
+                 <td><?php echo $row['cnpjDes'] ?></td>
+                 <td><?php echo $row['emailDes']; ?></td>
                  <td>
-                     <a href="deletar.php?id=<?php echo $row['idDes']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
-                     <a href="editar.php?id=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                     <a href="deletar.php?cargo='des'&id=<?php echo $row['idDes']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
+                     <a href="editar.php?cargo='des'&id=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
                  </td>
              </tr>
          <?php endwhile; ?>
