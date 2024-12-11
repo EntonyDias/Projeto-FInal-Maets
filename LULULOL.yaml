@@ -93,14 +93,9 @@ Eventos - promoçoes:
    - Botão de logar
    - Botão Cancelar
 
-&CadastroUsu
-   - Campo com os dados de cadastro usu
-   - Botão de cadastro usu
-   - Botão Cancelar
-
-&CadastroDes
-   - Campo com os dados de cadastro des
-   - Botão de cadastro des
+&CadastroUsuDes
+   - Campo com os dados de cadastro usu & des
+   - Botão de cadastro usu & des
    - Botão Cancelar
 
 &Logout
@@ -176,3 +171,9 @@ Processos:
 3. Limpeza de código (campos de verificação, organização visual)
 4. Organização da tela (div, header, etc)
 5. CSS
+
+
+----------------
+   tratar caminho de GerenciarDes no Index se for Des
+   logo é um botão que envia pro inicio
+   mudar o nome do index.js
