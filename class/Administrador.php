@@ -40,19 +40,10 @@ class Administrador {
     } 
 
     public function lerPorId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE idUsuario = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE fk_Usuario = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function atualizar($id, $nome, $cpf, $email, $senha) {
-        $query = "UPDATE " . $this->table_name .
-        " JOIN ". $this->table_name.".fk_usuario ON = ".$this->table_fk.".idUsuario
-        SET nomeUsu = ?, cpfUsu = ?, emailUsu = ?, senhaUsu = ? WHERE idUsuario = ?"; 
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([$nome, $cpf, $email, $senha, $id]);
-        return $stmt; 
     }
 
     public function deletar($id) {

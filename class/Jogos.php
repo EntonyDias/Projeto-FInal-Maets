@@ -71,5 +71,12 @@ class Jogo {
         return $stmt->fetchAll (PDO::FETCH_ASSOC);
     }
 
+    public function listarPorDesenvolvedoraID($idDes){
+        $query = "SELECT * FROM ". $this->table_name ." WHERE fk_desenvolvedora = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$idDes]);
+        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+    }
+
 }
 ?>
