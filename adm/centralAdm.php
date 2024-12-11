@@ -89,8 +89,8 @@ switch ($tela) {
                     <td><?php echo $row['cpfUsu'] ?></td>
                     <td><?php echo $row['emailUsu']; ?></td>
                     <td>
-                        <a href="../deletar.php?cargo='usu'&id=<?php echo $row['idUsuario']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
-                        <a href="../editar.php?cargo='usu'&id=<?php echo $row['idUsuario']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                        <a href="../deletar.php?cargo=1&id=<?php echo $row['idUsuario']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
+                        <a href="../editar.php?cargo=1&id=<?php echo $row['idUsuario']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
                     </td>
                 </tr>
             <?php endwhile; ?>
@@ -117,8 +117,8 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                  <td><?php echo $admInfo['cpfUsu'] ?></td>
                  <td><?php echo $admInfo['emailUsu']; ?></td>
                  <td>
-                     <a href="deletar.php?cargo='adm'&id=<?php echo $row['idAdm']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
-                     <a href="editar.php?cargo='adm'&id=<?php echo $row['idAdm']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                     <a href="../deletar.php?cargo=2&id=<?php echo $row['idAdm']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
+                     <a href="../editar.php?cargo=2&id=<?php echo $row['idAdm']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
                  </td>
              </tr>
          <?php endwhile; ?>
@@ -135,8 +135,8 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                  <td><?php echo $row['cnpjDes'] ?></td>
                  <td><?php echo $row['emailDes']; ?></td>
                  <td>
-                     <a href="deletar.php?cargo='des'&id=<?php echo $row['idDes']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
-                     <a href="editar.php?cargo='des'&id=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                     <a href="../deletar.php?cargo=3&id=<?php echo $row['idDes']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
+                     <a href="../editar.php?cargo=3&id=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
                  </td>
              </tr>
          <?php endwhile; ?>

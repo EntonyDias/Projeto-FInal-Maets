@@ -17,31 +17,37 @@ if (isset($_GET['id'])) {
     $cargo = $_GET['cargo'];
     $id = $_GET['id'];
 
-switch ($cargo) {
-    case 'usu':
- 
-            $usu->deletar($id);
 
-              if (isset($_SESSION['adm'])) {
-                header('Location: ../adm/centralAdm.php');
-                exit();
-                header('Location: index.php');
-            }else{
-                exit();
-            
-            }
-        
+    if ($cargo == 1) {
 
-        break;
-    case 'des':
+    $usu->deletar($id);
 
+        if (isset($_SESSION['adm'])) {
+            header('Location: ./adm/centralAdm.php');
+            exit();
+        } else {
+            header('Location: index.php');
+            exit();
+        }
+    } else if ($cargo == 2) {
+        $adm->deletar($id);
 
-break;  
-    case 'adm':
+        if (isset($_SESSION['adm'])) {
+            header('Location: ./adm/centralAdm.php');
+            exit();
+        } else {
+            header('Location: index.php');
+            exit();
+        }
+    } else {
+        $des->deletar($id);
 
-break;  
-
-    default:
- break;
-}
+        if (isset($_SESSION['adm'])) {
+            header('Location: ./adm/centralAdm.php');
+            exit();
+        } else {
+            header('Location: index.php');
+            exit();
+        }
+    }
 }
