@@ -20,34 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Processar login
         $email = $_POST['email'];
         $senha = $_POST['senha'];
-    
+
         //adm
-    if ($dados_adm = $adm->login($email, $senha)) {
+        if ($dados_adm = $adm->login($email, $senha)) {
 
-        $_SESSION['adm'] = $dados_adm;
+            $_SESSION['adm'] = $dados_adm;
 
-        header('Location:index.php');
-        exit();
+            header('Location:index.php');
+            exit();
 
-        //usuario
-    } else if ($dados_usuario = $usu->login($email, $senha)) {
+            //usuario
+        } else if ($dados_usuario = $usu->login($email, $senha)) {
 
-        $_SESSION['usu'] = $dados_usuario;
+            $_SESSION['usu'] = $dados_usuario;
 
-        header('Location:index.php');
-        exit();
+            header('Location:index.php');
+            exit();
 
-        //desenvolvedora
-    } else if ($dados_des = $des->login($email, $senha)) {
+            //desenvolvedora
+        } else if ($dados_des = $des->login($email, $senha)) {
 
-        $_SESSION['des'] = $dados_des;
+            $_SESSION['des'] = $dados_des;
 
-        header('Location:./desenvolvedora/gerenciarDes.php');
-        exit();
+            header('Location:./desenvolvedora/gerenciarDes.php');
+            exit();
+        }
     }
-  
-}
-var_dump($dados_des);
+    var_dump($dados_des);
 }
 
 ?>
@@ -64,15 +63,15 @@ var_dump($dados_des);
 
 <body>
     <header>
-        <h1>Login</h1>
-        <a href="index.php">voltar</a>
+        <div>
+            <img id="logo" src="./assets/logoTop.png" alt="">
+            <h1>Login</h1>
+            <a id="voltar" href="index.php">voltar</a>
+        </div>
     </header>
     <main>
-        <div class="box">
-
-            <img src="https://static.vecteezy.com/ti/vetor-gratis/t1/7033146-perfil-icone-login-head-icon-vetor.jpg" alt="">
-
-            <form method="POST">
+        <div id="box">
+            <form id="formulario" method="POST">
                 <label for="email">Email</label>
                 <input type="email" name="email" required>
 
@@ -80,14 +79,15 @@ var_dump($dados_des);
                 <input type="password" name="senha" required>
 
                 <input id="button" type="submit" name="login" value="Login">
+                <p style="margin-top: 20px;">Não tem uma conta?<br> <a href="registrar.php">Registre-se aqui</a></p>
             </form>
             <div id="mensagem">
                 <?php
                 //isso e basicamente para mostrar o erro que ocorrer tipo senha incorreta 
-                if (isset($mensagem_erro)) echo '<p>' . $mensagem_erro . '</p>'; ?>
+                if (isset($mensagem_erro)) echo '<p>' . $mensagem_erro . '</p>';
+                ?>
             </div>
-            <p style="margin-top: 20px;">Não tem uma conta? <a href="registrar.php">Registre-se aqui</a></p>
-
+        </div>
 
     </main>
 </body>

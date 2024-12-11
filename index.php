@@ -38,7 +38,9 @@
 
  <body>
      <header>
-         <h1>maets </h1>
+         <div><img id="logo" src="./assets/logoTop.png" alt="">
+             <h1>Maets</h1>
+         </div>
          <div>
              <?php
                 switch ($logado) {
@@ -67,7 +69,7 @@
                                 <input type='text' placeholder='pesquise' name='txtPesquisa'>
                                 <button type='submit' name='btnPesquisar'>      <img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
                             </form>";
-                            
+
 
                         echo "<a href='login.php'>login</a>";
                         break;
