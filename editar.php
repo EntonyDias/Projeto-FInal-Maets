@@ -42,13 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
     $usu->atualizar($id, $nome, $cpf, $email,$senha);
 
-    if (isset($_SESSION['adm'])) {
-        header('Location: ./adm/centralAdm.php');
-        exit();
-    } else {
-        header('Location: index.php');
-        exit();
-    }
     exit();
     }else{
         if($_POST['senha']!= ""){
@@ -58,16 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
         }
         $des->atualizar($id, $nome, $cnpj, $email, $senha);
-
-        if (isset($_SESSION['adm'])) {
-            $logado = "adm";
-            header('Location: ./adm/centralAdm.php');
-            exit();
-        } else {
-            $logado = "usu";
-            header('Location: index.php');
-            exit();
-        }
 
     }
   
@@ -89,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+   
 <main>
 
 <button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>

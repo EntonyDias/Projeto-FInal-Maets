@@ -47,7 +47,7 @@ class Administrador {
     }
 
     public function deletar($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE idUsuario = ?"; 
+        $query = "DELETE FROM " . $this->table_name . " WHERE fk_Usuario = ?"; 
         $stmt = $this->conn->prepare($query); 
         $stmt->execute([$id]); 
         return $stmt; 

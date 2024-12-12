@@ -5,6 +5,7 @@ include_once '../class/Usuario.php';
 include_once '../class/Administrador.php';
 include_once '../class/Desenvolvedora.php';
 $tela=null;
+$adm = new Administrador($db);
 
 if (!isset($_SESSION['adm'])) {
     header('Location: index.php');
@@ -12,7 +13,16 @@ if (!isset($_SESSION['adm'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['id'])){
+        
+$adm->registrar($_POST['id']);
+    }
+    if(isset($_POST['acao'])){
     $tela = isset($_POST['acao']) ? $_POST['acao'] : '';
+    }
+    
+
+    
 }
 
 // Processar exclusão de usuário
@@ -49,31 +59,23 @@ $dadosDes = $des->ler();
     </form>
 </div>
 </header>
-    <main>
-        <a href="../index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
+
+<body>
+   
+    <a href="../index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
+    <main>    
 <?php
 
 switch ($tela) {
     case 'usuario':?>
   
-  <section class="usuario">
+  
  
 
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <title>gerenciador de Usuarios</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-</head>
-
-<body>
-   
-        <h1>gerenciamento de usuarios</h1>
+        
+        <div>
+            <h1>gerenciamento de usuarios</h1>
  
-    <main>
         <table border="1">
             <tr>
 
@@ -91,10 +93,15 @@ switch ($tela) {
                     <td>
                         <a href="../deletar.php?cargo=1&id=<?php echo $row['idUsuario']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
                         <a href="../editar.php?cargo=1&id=<?php echo $row['idUsuario']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                        <form  action="" method="post">
+                        <input type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBhjoZmqCRAQ5zUbhsMXksI0DgZnK-ThRSSuQgBVJKHP9VjkE6v2BturFKr_oprzUD1XM&usqp=CAU" alt="Submit" width="48" height="48">
+        <input type="hidden" name="id" value="<?php echo $row['idUsuario']; ?>">
+    </form>
                     </td>
                 </tr>
             <?php endwhile; ?>
         </table>
+        </div><div>
         <h1>gerenciamento de administradores</h1>
  
 
@@ -122,7 +129,7 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                  </td>
              </tr>
          <?php endwhile; ?>
-     </table>
+     </table></div><div>
      <h1>gerenciamento de Desenvolvedoras</h1>
  
 
@@ -137,14 +144,14 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                  <td>
                      <a href="../deletar.php?cargo=3&id=<?php echo $row['idDes']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
                      <a href="../editar.php?cargo=3&id=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
-                     <a href="../gerenciarDes.php?idDes=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                     <a href="../gerenciarDes.php?idDes=<?php echo $row['idDes']; ?>"><img id="imgex" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2qny-bPSPmnz8Ksa3X8iE_B7SI8JILM9Xsw&s" alt=""></a>
                  </td>
              </tr>
          <?php endwhile; ?>
-     </table>
+     </table></div>
 
         </main>
-  </section>
+
 
 
   <?php break;
