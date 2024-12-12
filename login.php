@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" name="senha" required>
 
                 <input id="button" type="submit" name="login" value="Login">
-                <p style="margin-top: 20px;">Não tem uma conta?<br> <a href="registrar.php">Registre-se aqui</a></p>
+                <p style="margin-top: 20px;">Não tem uma conta?<br> <a href="cadastro.php">Registre-se aqui</a></p>
             </form>
             <div id="mensagem">
                 <?php

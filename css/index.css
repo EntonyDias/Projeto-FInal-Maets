@@ -24,7 +24,6 @@ header {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    position: fixed;
     width: 100%;
 }
 
@@ -86,9 +85,11 @@ img {
     width: 30px;
 
 }
+
 .jogos{
     margin-top: 100px;
 }
+
 form {
     gap: 10px;
     font-size: 30px;

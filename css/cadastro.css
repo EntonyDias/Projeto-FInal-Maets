@@ -1,131 +1,299 @@
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 body {
-    background-color: white;
+
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/wallpaper.png');
+    /* Caminho da imagem */
+    background-size: cover;
+    /* Faz a imagem cobrir toda a área */
+    background-repeat: no-repeat;
+    /* Evita a repetição da imagem */
+
+
 }
-#cargo{
-    padding: 5px;
-    font-size: 20px;
-    text-align: center;
-}
+
 header {
-    margin-bottom: 50px;
-    text-align: center;
-    padding: 20px;
-    color: white;
-    background-color: black;
-    box-shadow: 0 0 200px black;
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 20px;
 }
 
-    @media screen and (min-width: 768px) {
-        a {
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 10px;
-            border-radius: 30px;
+header div {
+    display: flex;
+    align-items: center;
+    gap: 50px;
 
-        }
+}
 
-        form input {
-            padding: 10px;
-            text-align: center;
-        }
+#logo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
 
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+#voltar {
+    margin-right: 0;
+}
 
-        main img {
-            margin-bottom: 20px;
-            border: 5px solid black;
-            border-radius: 100%;
-            width: 150px;
-            height: 150px;
-        }
+header button:hover {
+    cursor: pointer;
+}
 
-        form {
-            flex-direction: column;
-            align-items: center;
-            display: flex;
-            gap: 5px;
-        }
+header button {
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
 
-        #button {
-            background-color: black;
-            color: white;
-            border-radius: 30px;
-            padding: 10px;
-            font-size: 20px;
-        }
+}
 
-        form input {
-            padding: 5px;
-        }
-    }
+header a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
 
-    @media screen and (max-width: 768px) {
-        #cargo{
-            border: 2px solid black;
-            
-        }
-        a {
-            background-color: black;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            padding: 10px;
-            border-radius: 30px;
+}
 
-        }
+header input {
+    border: 5px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
 
-        form input {
-            font-size: 20px;
-            border: 2px solid black;
-            padding: 10px;
-        }
+}
 
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+header img,
+header h1,
+header p {
+    max-width: 100vw;
+    /* Impede que o conteúdo ultrapasse a largura do header */
+    overflow: hidden;
+    /* Esconde conteúdo que exceda */
+}
 
-        main img {
-            margin-bottom: 20px;
-            border: 5px solid black;
-            border-radius: 100%;
-            width: 150px;
-            height: 150px;
-        }
+#box {
+    margin-top: 100px;
+}
 
-        form {
-            flex-direction: column;
-            align-items: center;
-            display: flex;
-            gap: 5px;
-        }
+img {
+    height: 30px;
+    width: 30px;
 
-        #button {
-            background-color: black;
-            color: white;
-            border-radius: 30px;
-            padding: 10px;
-            font-size: 20px;
-        }
+}
 
-        label {
-            font-size: 20px;
-        }
+p{
+    justify-items: center;
+    color: silver;
+    width: 250px;
+}
+p a{
+    justify-items: center;
+    color: rgb(128, 0, 128);
+    width: 250px;
+}
+/* Estilização geral para o select */
+select {
+    width: 250px; /* Largura desejada */
+    padding: 10px; /* Espaçamento interno */
+    border: 2px solid #555; /* Borda com destaque */
+    border-radius: 8px; /* Borda arredondada */
+    background-color: #121212; /* Fundo escuro */
+    color: white; /* Cor do texto */
+    font-size: 1rem; /* Tamanho da fonte */
+    outline: none; /* Remove borda azul ao focar */
+    cursor: pointer; /* Mostra o cursor de clique */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
+    appearance: none; /* Remove o estilo padrão do navegador */
+    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
+    -moz-appearance: none; /* Para Firefox */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2985/2985150.png'); /* Ícone da seta */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
 
-        form input {
-            font-size: 20px;
-            padding: 5px;
-        }
+/* Alteração do estilo ao focar */
+select:focus {
+    border-color: rgb(128, 0, 128); /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 5px rgb(201, 20, 201); /* Efeito brilhante ao focar */
+}
 
-    }
+/* Estilização dos options */
+option {
+    background-color: rgb(0, 0, 0); /* Fundo escuro */
+    color: white; /* Cor do texto */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    border: none; /* Remove bordas */
+}
+
+/* Estilo para a tag <select> */
+select {
+    width: 100%; /* Ocupa toda a largura do contêiner pai */
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #1a1a1a; /* Fundo escuro */
+    color: white; /* Texto branco */
+    font-size: 1em;
+    outline: none; /* Remove o contorno padrão */
+    appearance: none; /* Remove o estilo padrão do navegador */
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave */
+}
+
+/* Adiciona um ícone de seta para o select */
+select::after {
+    content: "▼"; /* Ícone de seta */
+    font-size: 0.8em;
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+}
+
+/* Estilo para as opções <option> */
+select option {
+    background-color: #1a1a1a; /* Fundo escuro */
+    color: white; /* Texto branco */
+    font-size: 1em;
+    padding: 10px;
+}
+
+/* Efeito ao passar o mouse sobre as opções */
+select option:hover {
+    background-color: #333; /* Fundo mais claro */
+}
+
+/* Estilo geral do formulário */
+#formulario {
+    width: 250px;
+    background-color: black;
+    /* Fundo preto */
+    color: silver;
+    /* Texto em prata */
+    border: 2px solid purple;
+    /* Borda roxa */
+    border-radius: 10px;
+    /* Cantos arredondados */
+    padding: 20px;
+    width: 300px;
+    /* Largura fixa */
+    margin: 0 auto;
+    /* Centraliza na tela */
+    box-shadow: 0 0 10px purple;
+    /* Efeito de brilho ao redor */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para os rótulos (labels) */
+#formulario label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Estilo para os campos de entrada */
+#formulario input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background-color: black;
+    /* Fundo preto */
+    color: white;
+    /* Texto branco */
+}
+
+/* Efeito ao focar nos campos de entrada */
+#formulario input {
+    outline: none;
+    border: 2px solid silver;
+    /* Destaque roxo ao focar */
+}
+
+/* Estilo para o botão de envio */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: purple;
+    /* Fundo roxo */
+    color: white;
+    /* Texto branco */
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+#button:hover {
+    background-color: silver;
+    /* Fica prata ao passar o mouse */
+    color: black;
+    /* Texto preto no hover */
+}
+
+.menu button {
+
+    padding: 10px;
+    font-size: 20px;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(25, 25, 25);
+    color: rgb(0, 0, 0);
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo quando o menu está ativo */
+.menu.active {
+    transform: translateX(0);
+}
+
+/* Estilo dos links do menu */
+
+.menu a {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    border: 5px solid rgb(98, 0, 128);
+    text-decoration: none;
+    font-size: 24px;
+    margin: 10px 0;
+}
