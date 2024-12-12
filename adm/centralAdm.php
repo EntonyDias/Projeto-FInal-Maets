@@ -50,7 +50,7 @@ $dadosDes = $des->ler();
 </div>
 </header>
     <main>
-        <a href="../index.php">voltar</a>
+        <a href="../index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
 <?php
 
 switch ($tela) {

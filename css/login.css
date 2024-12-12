@@ -96,10 +96,11 @@ header p {
     margin-top: 100px;
 }
 
-img {
-    height: 30px;
-    width: 30px;
-
+ a img {
+    margin-top: 10px;
+    height: 50px;
+    width: 50px;
+border-radius: 100vh;
 }
 
 p{

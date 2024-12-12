@@ -44,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <img id="logo" src="./assets/logoTop.png" alt="">
             <h1>Cadastro</h1>
-            <a id="voltar" href="login.php">voltar</a>
         </div>
     </header>
+    <a href="login.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
     <main>
         <form id="formulario" method="POST">
             <label for="cargo">Tipo de usuario:</label>

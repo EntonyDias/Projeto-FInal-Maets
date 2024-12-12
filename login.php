@@ -66,9 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div>
             <img id="logo" src="./assets/logoTop.png" alt="">
             <h1>Login</h1>
-            <a id="voltar" href="index.php">voltar</a>
+         
         </div>
     </header>
+    <a href="index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
     <main>
         <div id="box">
             <form id="formulario" method="POST">

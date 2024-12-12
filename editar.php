@@ -85,12 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>editar</title>
+    <link rel="stylesheet" href="./css/editar.css">
 </head>
 
 <body>
 <main>
 
-<button id="backBtn" >voltar</button>
+<button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>
 <form method="POST">
     <?php
 
@@ -158,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ?>
     </form>
 </main>
-<script src="./js/editar.js"></script>
+<script src="./js/voltar.js"></script>
 </body>
 
 </html>
