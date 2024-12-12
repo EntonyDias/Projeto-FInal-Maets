@@ -10,6 +10,7 @@ $logado = "null";
 //Adm
 if (isset($_SESSION['adm'])) {
     $logado = $_SESSION['adm'];
+
     $dados_des = $desenvolvedora->lerPorId($logado['idDes']);
 
     //Des

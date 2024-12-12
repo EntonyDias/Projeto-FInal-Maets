@@ -6,7 +6,7 @@ include_once '../class/Administrador.php';
 include_once '../class/Jogos.php';
 
 $desenvolvedora = new Desenvolvedora($db);
-$jogos = new Jogo($db);
+$jogo = new Jogo($db);
 
 
 $logado = "null";
@@ -15,7 +15,10 @@ $logado = "null";
 //Adm
 if (isset($_SESSION['adm'])) {
    $logado = $_SESSION['adm'];
-   $dados_des = $desenvolvedora->lerPorId($logado['idDes']);
+
+   if(isset($_GET['idDes'])){
+       $dados_des = $desenvolvedora->lerPorId($_GET['idDes']);
+   }
 
    //Des
 } else if (isset($_SESSION['des'])) {
@@ -29,10 +32,8 @@ if (isset($_SESSION['adm'])) {
 }
 
 
-$jogosDes = $jogos->listarPorDesenvolvedoraID($dados_des['idDes']);
-$jogo = $jogos->ler();
-
-
+$jogosDes = $jogo->listarPorDesenvolvedoraID($dados_des['idDes']);
+$jogos = $jogo->ler();
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +58,20 @@ $jogo = $jogos->ler();
 
          switch ($logado) {
             case isset($_SESSION['adm']):
-               echo "<a href='logout.php'>Logout</a>";
-               echo "<a href='./adm/centralAdm.php'>Central de Controle</a>";
-               echo "<a href='altConta.php'>Editar Conta</a>";
+               echo "<a href='../logout.php'>Logout</a>";
+               echo "<a href='../adm/centralAdm.php'>Central de Controle</a>";
+               echo "<a href='../altConta.php?cargo=1&id=<?php echo ".$logado['idAdm'].";'>Editar Conta</a>";
                break;
 
             case isset($_SESSION['des']):
-               echo "<a href='addJogo.php'>Adicionar Jogo</a>";
-               echo "<a href='bibliotecaDes.php'>Biblioteca</a>";
-               echo "<a href='altContaDes.php'>Editar Conta</a>";
-               echo "<a href='logout.php'>Logout</a>";
+               echo "<a href='./addJogo.php'>Adicionar Jogo</a>";
+               echo "<a href='../editar.php?cargo=3&id=<?php echo ".$logado['idDes'].";'>Editar Conta</a>";
+               echo "<a href='../logout.php'>Logout</a>";
                break;
 
             default:
-               echo "<a href='login.php'>Login</a>";
-               echo "<a href='index.php'>Voltar pro Inicio</a>";
+               echo "<a href='../login.php'>Login</a>";
+               echo "<a href='../index.php'>Voltar pro Inicio</a>";
                break;
          }
 
@@ -91,7 +91,7 @@ $jogo = $jogos->ler();
                 <th>Preco</th>
                 <th>Ações</th>
             </tr>
-            <?php while ($row = $jogo->fetch(PDO::FETCH_ASSOC)) : ?>
+            <?php while ($row = $jogosDes->fetch(PDO::FETCH_ASSOC)) : ?>
                 <tr>
 
                     <td><?php echo $row['nomeJogo']; ?></td>
