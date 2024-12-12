@@ -90,6 +90,7 @@ Para configurar e executar o projeto localmente, siga os passos abaixo:
   </tr>
 </table>
 
-...
+## Estrutura do Banco de Dados
+tb
 
 ---
