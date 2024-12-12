@@ -20,9 +20,6 @@
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Badges](#badges)
 - [Contatos](#Contatos)
-- [...](#...)
-- [...](#...)
-- [...](#...)
 ---
 
 ## Descrição do Projeto
@@ -44,8 +41,7 @@ Nosso projeto refere-se a uma loja virtal de jogos eletrônicos, onde os usuario
 <!-- Badge GitHub Pages -->
 - ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 <!-- Badge ChatGpt -->
-- ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
-- **...** 
+- ![JavaScript](https://img.shields.io/badge/JavaScript-grey?style=for-the-badge&logo=javascript)
 ---
 
 ## IDEs/Editores utilizados
@@ -57,8 +53,7 @@ Para configurar e executar o projeto localmente, siga os passos abaixo:
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/usuario/projetoFinalWeb2.git
-    cd ./projetoFinalWeb2/
+    git clone https://github.com/EntonyDias/Projeto-Final-Maets
     code .
 
 ---
