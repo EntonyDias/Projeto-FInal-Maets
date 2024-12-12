@@ -5,6 +5,7 @@ include_once 'class/Usuario.php';
 include_once 'class/Administrador.php';
 include_once 'class/Desenvolvedora.php';
 
+$logado = "";
 
 $usu = new Usuario($db);
 $des = new Desenvolvedora($db);
@@ -33,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
 
     if ($cargo == 1 || $cargo == 2) {
-if($_POST['senha']!= ""){
-    $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
-}else{
-    $senha= $row["senhaUsu"];
+        if($_POST['senha']!= ""){
+            $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+        }else{
+            $senha= $row["senhaUsu"];
     
 }
     $usu->atualizar($id, $nome, $cpf, $email,$senha);
@@ -59,9 +60,11 @@ if($_POST['senha']!= ""){
         $des->atualizar($id, $nome, $cnpj, $email, $senha);
 
         if (isset($_SESSION['adm'])) {
+            $logado = "adm";
             header('Location: ./adm/centralAdm.php');
             exit();
         } else {
+            $logado = "usu";
             header('Location: index.php');
             exit();
         }
@@ -87,7 +90,7 @@ if($_POST['senha']!= ""){
 <body>
 <main>
 
-<a href="">voltar</a>
+<button id="backBtn" >voltar</button>
 <form method="POST">
     <?php
 
@@ -155,6 +158,7 @@ if($_POST['senha']!= ""){
     ?>
     </form>
 </main>
+<script src="./js/editar.js"></script>
 </body>
 
 </html>

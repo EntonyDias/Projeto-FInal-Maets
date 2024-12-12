@@ -1,6 +1,7 @@
  <?php
 
     session_start();
+
     include_once './db/config.php';
     include_once './class/Usuario.php';
     include_once './class/Desenvolvedora.php';
@@ -42,39 +43,32 @@
              <h1>Maets</h1>
          </div>
          <div>
-             <?php
-                switch ($logado) {
-                    case isset($_SESSION['adm']):
-                        echo "
-                        <form action='pesquisar.php'' method='post'>
+         <form action='pesquisar.php' method='post'>
                             <input type='text' placeholder='pesquise' name='txtPesquisa'>
                             <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                        </form>";
+                        </form>
+             <?php
+             
+                switch ($logado) {
+                    case isset($_SESSION['adm']):
+                   
 
                         echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
                         break;
 
                     case isset($_SESSION['usu']):
-                        echo "
-                        <form action='pesquisar.php'' method='post'>
-                            <input type='text' placeholder='pesquise' name='txtPesquisa'>
-                            <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                        </form>";
 
                         echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
                         break;
 
                     default:
-                        echo "<form action='pesquisar.php'' method='post'>
-                                <input type='text' placeholder='pesquise' name='txtPesquisa'>
-                                <button type='submit' name='btnPesquisar'>      <img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-                            </form>";
-
 
                         echo "<a href='login.php'>login</a>";
                         break;
                 }
                 ?>
+                     
+                   
              <button class="menu-btn">&#9776;</button>
          </div>
          <div class="menu" id="menu">
@@ -82,13 +76,14 @@
                 switch ($logado) {
                     case isset($_SESSION['adm']):
                         echo "<a href='logout.php'>logout</a>";
+                        echo "<a href='editar.php?cargo=2&id=".$logado['idAdm']."'>editar conta</a>";
+                       
                         echo "<a href='./adm/centralAdm.php'>central de controle</a>";
-                        echo "<a href='altConta.php'>editar conta</a>";
                         break;
 
                     case isset($_SESSION['usu']):
 
-                        echo "<a href='altConta.php'>editar conta</a>";
+                        echo "<a href='editar.php?cargo=1&id=". $logado['idUsuario']."'> Editar conta </a> ";
                         echo "<a href='logout.php'>logout</a>";
 
                         break;
