@@ -91,6 +91,52 @@ Para configurar e executar o projeto localmente, siga os passos abaixo:
 </table>
 
 ## Estrutura do Banco de Dados
-tb
+
+Descreva o banco de dados usado no projeto, incluindo:
+
+- **Tipo de Banco de Dados**: Relacional (MySQL).
+- **Estrutura**: Cada tabela irá se aplicar a uma de nossas entidades separadamente e relacionando entre si quando necessario. Assim como haverá uma tabela para os **Usuarios** do nosso site de compras, também tem uma tabela de **Biblioteca** armazenando todas as suas compras. Além de é claro os **Usuarios** poderem criar seus próprios **Carrinhos** de compra com os **Itens**. Cada item ou **Jogo** compravel tem seu provedor ou, no nosso caso, **Desenvolvedor** que terá também sua própria **Biblioteca** com seus produtos criados para edição ou possível deletagem. Também ha um **Administrador** com sua própria tabela de banco de dados. Este será responsável por gerir o site, deletando, cadastrando ou editando os **Usuarios**, **Desenvolvedores**
+ e **Jogos**.
+
+- **Campos Principais**:
+- 
+  - tb_administradores: 
+    - `idAdm` (tipo: chave primária, única e auto incremental)
+    - `fk_usuario` (tipo: chave estrangeira, ligação das tabelas de usuario e administrador)
+  - tb_bibliotecas:
+    - `idBiblioteca` (tipo: chave primária, unica e auto incremental)
+    - `fk_usuairo` (tipo: chave estrangeira, ligação das tabelas de usuario e biblioteca)
+    - `fk_itens` (tipo: chave estrangeira, ligação das tabelas de itens e biblioteca)
+  - tb_carrinhos:
+    - `idCarrinhos` (tipo: chave primária, unica e auto incremental)
+    - `status` (tipo: texto de um digito (char), usado para indicar se o carrinho ja foi comprado ou ainda esta em pendente)
+    - `fk_usuairo` (tipo: chave estrangeira, ligação das tabelas de usuario e carrinho)
+  - tb_desenvolvedora:
+    - `idDes` (tipo: chave primária, unica e auto incremental)
+    - `cnpjDes` (tipo: texto (varchar) a ideia é criar boletos de compras ficticios usando o cnpj da empresa)
+    - `nomeDes` (tipo: texto (varchar), nome de uma empresa ficticia)
+    - `emailDes` (tipo: texto (varchar), email de uma empresa ficticia, usado também para login)
+    - `senhaDes` (tipo: texto (varchar), senha de uma empresa ficticia, usado também para login)
+  - tb_itens:
+    - `idItens` (tipo: chave primária, unica e auto incremental)
+    - `fk_jogos` (tipo: chave estrangeira, ligação das tabelas de jogos e itens)
+    - `fk_carrinho` (tipo: chave estrangeira, ligação das tabelas de carrinhos e itens)
+    - `fk_biblioteca` (tipo: chave estrangeira, ligação das tabelas de biblioteca e itens)
+  - tb_jogos:
+    - `idJogo` (tipo: chave primária, unica e auto incremental)
+    - `nomeJogo` (tipo: texto (varchar), nome de um jogo ficticio)
+    - `imgjogo` (tipo: texto (varchar), usado para indicar os diretórios das imagens dos jogos)
+    - `descricaoJogo` (tipo: texto (varchar), usado para descrever os jogos)
+    - `precoJogo` (tipo: numero com virgula (float, indicara o preco do jogo)
+    - `idadeCategJogo` (tipo: valor inteiro (int), indicara a idade indicada para jogar do jogo)
+    - `categoriaJogo` (tipo: texto (varchar), usado para pesquisar no site os jogos da categoria)
+    - `fk_desenvolvedora` (tipo: chave estrangeira, ligação das tabelas de desenvolvedora e jogo)
+  -  tb_usuario:
+    - `idDes` (tipo: chave primária, unica e auto incremental)
+    - `cpfUsu` (tipo: texto (varchar) a ideia é pagar boletos de compras ficticias usando o cpf do usuario)
+    - `nomeUsu` (tipo: texto (varchar), nome de um usuario)
+    - `emailUsu` (tipo: texto (varchar), email de um usuario, usado também para login)
+    - `senhaUsu` (tipo: texto (varchar), senha de um usuario, usado também para login)
+
 
 ---
