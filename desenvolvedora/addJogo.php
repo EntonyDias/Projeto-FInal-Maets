@@ -33,7 +33,7 @@ if (isset($_SESSION['adm'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    
+
 
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idade = $_POST['idade'];
     $fk_desenvolvedora = $_POST['desen'];
     $categoriaJogo = $_POST['cat'];
+    $imagem = $_FILES['imagem'];
 
     $nomeImagem = "";
     if ($imagem['error'] === UPLOAD_ERR_OK) {
@@ -67,8 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             die("erro ao fazer upload da imagem");
         }
 
-    $jogo->registrar($nome, $nomeImagem, $descricao, $preco, $idade, $fk_desenvolvedora, $categoriaJogo);
-
+        $jogo->registrar($nome, $nomeImagem, $descricao, $preco, $idade, $fk_desenvolvedora, $categoriaJogo);
     }
 }
 
@@ -96,33 +96,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form method="POST" enctype="multipart/form-data">
 
-            
-            <?php 
-            if ($admTrue){
 
-            echo "<label for='desen'>Selecionar Desenvolvedora:</label>
-            <select name='desen' id='desen'>";
+            <?php
+            if ($admTrue) {
+
+                echo "<label for='desen'>Selecionar Desenvolvedora:</label>
+            <select name='desen' id='desen'>
+            <option value='nula'>Desenvolvedora</option>";
+
+                while ($row = $desenvelvedoras->fetch(PDO::FETCH_ASSOC)) {
+
+                    echo "<option value='" . htmlspecialchars($row['idDes']) . "'>" . htmlspecialchars($row['nomeDes']) . "</option>";
+                }
+                echo "</select>";
+            } else {
+                echo "
+                    <select name='desen' id='desen' hidden>
+                    <option value='" . htmlspecialchars($logado['idDes']) . "' hidden></option>";
             }
-            
-            while ($row = $desenvelvedoras->fetch(PDO::FETCH_ASSOC)) {
-
-                   echo "<option value='<?php echo ".$row['idDes'].";?>'>  <?php echo ".$row['nomeDes'].";?></option>";}
             ?>
 
-            </select>
+
+
 
             <label for="nome">Nome:</label>
-            <input type="text" name="nome" required>
+            <input type="text" name="nome" id="nome" required placeholder="Nome do Game">
 
-            <label for="cpf">Cpf/cnpj:</label>
-            <input type="text" name="cpf" required>
+            <label for="imagem">Imagem:</label>
+            <input type="file" name="imagem" id="imagem" required>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" required>
+            <label for="descricao">Descrição:</label>
+            <textarea name="descricao" id="descricao" required placeholder="Descrição do jogo" rows="8" cols="8"></textarea>
 
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" required>
+            <label for="preco">Preço:</label>
+            <input type="number" name="preco" id="preco" required>
 
+            <label for="idade">Idade Categórica:</label>
+            <input type="number" name="idade" id="idade" required step="1">
+
+            <label for="cat">Categória/Gênero:</label>
+            <select name='cat' id='cat' required>
+                <option value='Acao'>Ação</option>
+                <option value='Aventura'>Aventura</option>
+                <option value='FPS' >FPS</option>
+                <option value='RPG' >RPG</option>
+                <option value='MMORPG'>MMORPG</option>
+                <option value='Estrategia'>Estratégia</option>
+                <option value='Esporte' >Esporte</option>
+                <option value='Corrida' >Corrida</option>
+                <option value='Luta' >Luta</option>
+                <option value='Plataforma'>Plataforma</option>
+                <option value='SoulsBorn' >SoulsBorn</option>
+                <option value='Metroidvania'>Metroidvania</option>
+                <option value='Mundo Aberto' >Mundo Aberto</option>
+                <option value='Sandbox' >Sandbox</option>
+                <option value='VR' >VR</option>
+                <option value='Simulator'>Simulator</option>
+                <option value='Casual' >Casual</option>
+            </select>
 
 
             <input id="button" type="submit" value="Adicionar">
@@ -132,4 +163,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </body>
 
 </html>
-

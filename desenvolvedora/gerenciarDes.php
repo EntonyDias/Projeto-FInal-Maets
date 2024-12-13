@@ -60,13 +60,13 @@ $jogos = $jogo->ler();
             case isset($_SESSION['adm']):
                echo "<a href='../logout.php'>Logout</a>";
                echo "<a href='../adm/centralAdm.php'>Central de Controle</a>";
-               echo "<a href='./addJogo.php?idDes=<?php echo ".$dados_des['idDes'].";?>'>Adicionar Jogo</a>";
-               echo "<a href='../altConta.php?cargo=1&id=<?php echo ".$logado['idAdm'].";'>Editar Conta</a>";
+               echo "<a href='./addJogo.php?idDes=".$dados_des['idDes']."'>Adicionar Jogo</a>";
+               echo "<a href='../editar.php?cargo=1&id=".$logado['idAdm']."'>Editar Conta</a>";
                break;
 
             case isset($_SESSION['des']):
-               echo "<a href='./addJogo.php?idDes=<?php echo ".$logado['idDes'].";?>'>Adicionar Jogo</a>";
-               echo "<a href='../editar.php?cargo=3&id=<?php echo ".$logado['idDes'].";'>Editar Conta</a>";
+               echo "<a href='./addJogo.php?idDes=".$logado['idDes']."'>Adicionar Jogo</a>";
+               echo "<a href='../editar.php?cargo=3&id=".$logado['idDes']."'>Editar Conta</a>";
                echo "<a href='../logout.php'>Logout</a>";
                break;
 
