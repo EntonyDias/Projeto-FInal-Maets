@@ -241,8 +241,18 @@ select option:hover {
     /* Destaque roxo ao focar */
 }
 
+button{
+    background-color: rgba(240, 248, 255, 0);
+    border-color: rgba(240, 248, 255, 0);
+    }
+    
+    button img{
+        width: 50px;
+        height: 50px;
+        border-radius: 100vh;
+    }
 /* Estilo para o botão de envio */
-button {
+form button {
     width: 100%;
     padding: 10px;
     background-color: purple;

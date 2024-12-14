@@ -12,12 +12,10 @@
 
     if (isset($_SESSION['adm'])) {
         $logado = $_SESSION['adm'];
-
-        //usuario
+        
     } else if (isset($_SESSION['des'])) {
         $logado = $_SESSION['des'];
 
-        //desenvolvedora
     } else if (isset($_SESSION['usu'])) {
         $logado = $_SESSION['usu'];
     }

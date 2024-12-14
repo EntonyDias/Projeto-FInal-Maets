@@ -8,6 +8,18 @@ header div {
     gap: 50px;
     
     }
+    header form input {
+        cursor:  grab;
+        text-align: center;
+        font-size: 20px;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 30px;
+        border-color: rgb(98, 0, 128);
+        border: 5px solid rgb(56, 0, 56);
+    }
     header {
         color: rgb(255, 255, 255);
         display: flex;
@@ -54,6 +66,7 @@ form img{
         border-radius: 30px;
 
     }
+    
 a img{
     margin-top: 10px;
     width: 50px;
@@ -72,8 +85,62 @@ a img{
     main div{
 text-align: center;
     }
+    .usuarios{
+        display: flex;
+        flex-direction: column;
+    align-items: center;
+    }
     main{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+    header button {
+        cursor:  grab;
+        font-size: 20px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(98, 0, 128);
+        border: 5px solid rgb(56, 0, 56);
+    
+    }
+.menu button {
+
+    padding: 10px;
+    font-size: 20px;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(25, 25, 25);
+    color: rgb(0, 0, 0);
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo quando o menu está ativo */
+.menu.active {
+    transform: translateX(0);
+}
+
+/* Estilo dos links do menu */
+
+.menu a {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    border: 5px solid rgb(98, 0, 128);
+    text-decoration: none;
+    font-size: 24px;
+    margin: 10px 0;
+}

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1>Cadastro</h1>
         </div>
     </header>
-    <a href="login.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
+    <button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>
     <main>
         <form id="formulario" method="POST">
             <label for="cargo">Tipo de usuario:</label>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button id="button" type="submit">Adicionar</button>
         </form>
     </main>
-
+    <script src="js/voltar.js"></script>
 </body>
 
 </html>

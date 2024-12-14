@@ -6,11 +6,15 @@ include_once '../class/Administrador.php';
 include_once '../class/Desenvolvedora.php';
 $tela=null;
 $adm = new Administrador($db);
+$logado = "null";
 
 if (!isset($_SESSION['adm'])) {
     header('Location: index.php');
     exit();
 }
+    $logado = $_SESSION['adm'];
+
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST['id'])){
@@ -57,11 +61,30 @@ $dadosDes = $des->ler();
         <input type="submit" value="jogo">
         <input type="hidden" name="acao" value="jogo">
     </form>
+    
+    <button class="menu-btn">&#9776;</button>
 </div>
 </header>
 
 <body>
+<div class="menu" id="menu">
+    <?php
+    switch ($tela) {
+        case 'usuario':?>
+
+        
+     <?php break;
+   case 'jogo':?>
    
+    <?php break;
+      default:
+     
+    }
+    ?>
+    <a href='../editar.php?cargo=2&id="<?php$logado['idAdm']?>'>editar conta</a>
+    <a href='../logout.php'>logout</a>
+<button id="close-menu" style="margin-top: 20px;">Fechar</button>
+</div>
     <a href="../index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
     <main>    
 <?php
@@ -70,7 +93,7 @@ switch ($tela) {
     case 'usuario':?>
   
   
- 
+  <section class="usuarios">
 
         
         <div>
@@ -149,8 +172,8 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
              </tr>
          <?php endwhile; ?>
      </table></div>
-
-        </main>
+     </section>
+        
 
 
 
@@ -158,7 +181,7 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
    case 'jogo':?>
 
 <section class="jogo">
-
+<h1>coisas dos jogos</h1>
 </section>
 
     <?php break;
@@ -169,5 +192,6 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
 ?>
     
     </main>
+    <script src="../js/index.js"></script>
 </body>
 </html>
