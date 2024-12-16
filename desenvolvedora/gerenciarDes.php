@@ -101,6 +101,7 @@ $jogos = $jogo->ler();
                     <td>
                         <a href="../deletar.php?cargo=4&id=<?php echo $row['idJogo']; ?>"><img id="imgalt" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s" alt=""></a>
                         <a href="../editar.php?cargo=4&id=<?php echo $row['idJogo']; ?>"><img id="imgex" src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png" alt=""></a>
+                        <a href="../jogo.php?id=<?php echo $row['idJogo']; ?>"><img id="imgver" src="../assets/olho.png" alt=""></a>
                     </td>
                 </tr>
             <?php endwhile; ?>

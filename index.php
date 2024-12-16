@@ -36,7 +36,7 @@
 
  <body>
      <header>
-         <div><img id="logo" src="./assets/logoTop.png" alt="">
+         <div><a href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></a>
              <h1>Maets</h1>
          </div>
          <div>
@@ -110,12 +110,12 @@
              <?php while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
 
                  <?php
-                    echo "<div id='ListaJogos'>";
+                    echo "<div id='dadosJogo'> <a href='./jogo.php?id=".$row['idJogo']."'>";
                     
                     echo "<div id='imagem'><img src='./uploads/". $row['ImgJogo']."' alt='Foto do ".$row['nomeJogo']."'></div>";
 
                     echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
-                    echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+                    echo "<div id='precoDiv'> <p id='preco'>" . $row['precoJogo'] . "</p></div><br><br>";
                     
                     $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
 
@@ -135,7 +135,7 @@
                         echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 16 Anos'><br><br>";
                     }
 
-                    echo "</div></div>"; ?>
+                    echo "</a></div>"; ?>
 
              <?php endwhile; ?>
 
