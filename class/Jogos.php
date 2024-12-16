@@ -2,6 +2,7 @@
 class Jogo {
     private $conn;
     private $table_name = "tb_jogos";
+    private $table_des = "tb_desenvolvedoras";
 
 
     public function __construct($db) {
@@ -78,7 +79,14 @@ class Jogo {
         return $stmt->fetchAll (PDO::FETCH_ASSOC);
     }
 
-    
+//SELECT * FROM tb_jogos JOIN tb_desenvolvedoras ON tb_jogos.fk_desenvolvedora = tb_desenvolvedoras.idDes where idDes = 1
+
+    public function infosComDesenvolvedoras($fk){
+        $query = "SELECT * FROM ". $this->table_name ." JOIN ".$this->table_des ." ON " . $this->table_name.".fk_desenvolvedora = ". $this->table_des . ".idDes WHERE idDes = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$fk]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 }
 ?>

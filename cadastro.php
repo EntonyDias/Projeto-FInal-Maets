@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div>
-            <img id="logo" src="./assets/logoTop.png" alt="">
+            <img id="logo" src="./assets/logoTop.png" alt="LogoTop">
             <h1>Cadastro</h1>
         </div>
     </header>

@@ -33,8 +33,6 @@ if (isset($_SESSION['adm'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-
-
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];
@@ -69,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $jogo->registrar($nome, $nomeImagem, $descricao, $preco, $idade, $fk_desenvolvedora, $categoriaJogo);
+
+        header('Location: ');
     }
 }
 
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <h1>Adicionar seu jogo</h1>
     </header>
-    <a href="../login.php">voltar</a>
+    <button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt="Botão de voltar"></button>
     <main>
         <img id="logo" src="https://png.pngtree.com/png-vector/20230909/ourmid/pngtree-cool-emoticon-cut-out-png-image_9222499.png" alt="">
 
@@ -161,5 +161,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
 </body>
-
+    <script src="../js//voltar.js"> </script>
 </html>

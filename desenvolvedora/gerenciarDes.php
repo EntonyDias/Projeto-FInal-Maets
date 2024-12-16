@@ -87,16 +87,15 @@ $jogos = $jogo->ler();
             <tr>
 
                 <th>Nome</th>
-                <th>Img</th>
+                <th>Imagem</th>
                 <th>Desenvolvedora</th>
-                <th>Preco</th>
+                <th>Preço</th>
                 <th>Ações</th>
             </tr>
             <?php while ($row = $jogosDes->fetch(PDO::FETCH_ASSOC)) : ?>
                 <tr>
-
                     <td><?php echo $row['nomeJogo']; ?></td>
-                    <td><?php echo  $row['ImgJogo'] ?></td>
+                    <td><?php echo "<img src='../uploads/". $row['ImgJogo']."' alt='Foto do ".$row['nomeJogo']."'"; ?></td>
                     <td><?php echo $row['fk_desenvolvedora']; ?></td>
                     <td><?php echo $row['precoJogo']; ?></td>
                     <td>

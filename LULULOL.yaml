@@ -15,9 +15,9 @@ CPF;
 Email;
 Senha;
 =========
-Bio;
-Foto Perfil
-Idade;
+!Bio;
+!Foto !Perfil
+!Idade;
 
 3. Desenvolvedora:
 ID;
@@ -26,9 +26,10 @@ Nome;
 Email;
 Senha;
 ============
-Logo;
-country;
-founded_years;
+!Logo;
+!country;
+!Foto !Perfil
+!founded_years;
 
 4. Jogos:
 ID;
@@ -40,7 +41,7 @@ fk_desenvolvedora
 Idade_cat;
 Categoria;
 ================
-release_date;
+!release_date;
 
 
 5. Carrinho:
@@ -48,7 +49,7 @@ ID;
 fk_usuario;
 status;
 ================
-buy_time
+!buy_time
 
 
 6. Items:
@@ -57,22 +58,15 @@ fk_jogo;
 fk_carrinho;
 fk_biblioteca;
 ================
-add_time
-fk_preco
+!add_time
+!fk_preco
 
 
-7. Biblioteca: =
+7. Biblioteca:
 id;
 fk_usuario;
 fk_itens;
 ================
-
-
-Eventos - promoçoes:
-------------------------
-
-
-&TELAS:
 
 #Todos
 &Catalogo
@@ -160,10 +154,6 @@ Eventos - promoçoes:
 %Listar_Carrinho
 
  ........................................................
-
-*Dã = Banco de dados & README.md & CSS com @MediasQuery
-*Entony = Conexão com o Banco E Classes
-*Higor = Telas
 
 Processos:
 1. Componentes (div, header, etc) e Funções

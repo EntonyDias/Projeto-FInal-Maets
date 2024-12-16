@@ -81,7 +81,7 @@ $dadosDes = $des->ler();
      
     }
     ?>
-    <a href='../editar.php?cargo=2&id="<?php$logado['idAdm']?>'>editar conta</a>
+    <a href='../editar.php?cargo=2&id="<?php $logado['idAdm']?>'>editar conta</a>
     <a href='../logout.php'>logout</a>
 <button id="close-menu" style="margin-top: 20px;">Fechar</button>
 </div>
