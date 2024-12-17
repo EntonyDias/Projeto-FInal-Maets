@@ -18,6 +18,7 @@ $dadosUsu = $usu->ler();
 $dadosAdm = $adm->ler();
 $dadosDes = $des->ler();
 
+$exist=1;
 if (!isset($_SESSION['adm'])) {
     header('Location: ../index.php');
     exit();
@@ -32,20 +33,19 @@ if (!isset($_SESSION['adm'])) {
     }
     
 
+
     
         if(isset($_POST['id'])){
-    
-        while ($row = $dadosAdm->fetch(PDO::FETCH_ASSOC)) :
-            if($row['fk_usuario']!= $_POST['id']){
 
-            $adm->registrar($_POST['id']);
-            }else{
-          $mensagem = "Adiministrador ja registrado";
-            };
-            
-        endwhile;
+    $exist =$adm->lerPorUsuario($_POST['id']);
+   
+    if(!$exist){
+        $adm->registrar($_POST['id']);
+        }else{
+            $mensagem = "esse usuario ja e um adiministrador ";
+        
         }
-    
+}
 }
 
 // Processar exclusão de usuário
