@@ -196,7 +196,7 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
    case 'jogo':?>
 
 <section class="jogo">
-<h1>coisas dos jogos</h1>
+
 
              <?php
 
@@ -216,7 +216,7 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                     $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
 
                     echo "<p> Por: " . $jogo['nomeDes'] ."</p><br><br>";
-
+echo "<div id='idade'>";
                     if($row['idadeCategJogo'] < 10){
                         echo "<img src='../assets/livreAnos.png' alt='Classificação Livre'><br><br>";
                     } else if($row['idadeCategJogo'] < 12){
@@ -231,14 +231,14 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
                         echo "<img src='../assets/dezoitoAnos.png' alt='Classificação 16 Anos'><br><br>";
                     }
 
-                    echo "</div></div>"; 
-
-              endwhile; ?>
-             <div>
-             <a href="../desenvolvedora/addJogo.php">cadastrar novo <b>Jogo</b></a>
-             </div>
+               echo "    
+               <a href='../editar.php?cargo=4&id=". $row['idJogo']."'><img id='imgex' src='https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_640.png' alt=''></a>
+                    <a href='../deletar.php?cargo=4&id=" .$row['idJogo']."'><img id='imgalt' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcx1AupvWZqkA2_GijfJIDCsc1xCNXVNOkDQ&s' alt=''></a>
+               </div></div></div>";
+                endwhile; ?>
+             
 </section>
-
+<a href="../desenvolvedora/addJogo.php">cadastrar novo <b>Jogo</b></a>
 
 
     <?php break;
