@@ -99,7 +99,7 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
 
 <main>
       <?php
-      echo "<div id='dadosJogo'> <a href='./jogo.php?id=" . $jogo['idJogo'] . "'>";
+      echo "<div id='dadosJogo'>";
 
       echo "<div id='imagem'><img src='./uploads/" . $jogo['ImgJogo'] . "' alt='Foto do " . $jogo['nomeJogo'] . "'></div>";
 
@@ -127,8 +127,8 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
       
       echo "<div id='descricaoDiv'> <p id='descricao'>" . $jogo['descricaoJogo'] . "</p></div><br><br>";
 
-      echo "</a></div>"; ?>
+      echo "</div>"; ?>
    </main>
 </body>
-
+      <script src="./js/index.js"></script>
 </html>

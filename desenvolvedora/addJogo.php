@@ -16,12 +16,10 @@ $admTrue = isset($_SESSION['adm']);
 //Adm
 if (isset($_SESSION['adm'])) {
     $logado = $_SESSION['adm'];
-    $dados_des = $des->lerPorId($_GET['idDes']);
 
     //Des
 } else if (isset($_SESSION['des'])) {
     $logado = $_SESSION['des'];
-    $dados_des = $des->lerPorId($logado['idDes']);
 
     //Usu
 } else if (isset($_SESSION['usu'])) {
@@ -30,7 +28,8 @@ if (isset($_SESSION['adm'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
+
 
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
@@ -66,18 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $jogo->registrar($nome, $nomeImagem, $descricao, $preco, $idade, $fk_desenvolvedora, $categoriaJogo);
-        
-        if (isset($_SESSION['adm'])){
+
+        if (isset($_SESSION['adm'])) {
 
             header('location: ../adm/centralAdm.php');
-            
+            exit();
         } else if (isset($_SESSION['des'])) {
-            
-            
+
+
             header('location: ./gerenciarDes.php');
-        
+            exit();
         }
-        
     }
 }
 
@@ -92,26 +90,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Cadastrar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/addJogo.css">
 </head>
 
 <body>
     <header>
         <h1>Adicionar seu jogo</h1>
     </header>
-    <button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt="Botão de voltar"></button>
+
+    <?php
+        if (isset($_SESSION['adm'])) {
+
+            echo "<a href='../adm/centralAdm.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
+
+        } else if (isset($_SESSION['des'])) {
+
+            echo "<a href='./gerenciarDes.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
+
+        }
+    ?>
     <main>
         <img id="logo" src="https://png.pngtree.com/png-vector/20230909/ourmid/pngtree-cool-emoticon-cut-out-png-image_9222499.png" alt="">
 
 
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" action="./addJogo.php" enctype="multipart/form-data">
 
 
             <?php
             if ($admTrue) {
 
                 echo "<label for='desen'>Selecionar Desenvolvedora:</label>
-            <select name='desen' id='desen'>
-            <option value='nula'>Desenvolvedora</option>";
+                    <select name='desen' id='desen'>
+                    <option value='nula'>Desenvolvedora</option>";
 
                 while ($row = $desenvelvedoras->fetch(PDO::FETCH_ASSOC)) {
 
@@ -125,7 +135,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
 
-
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] == "nula") {
+                echo "<p>Selecione uma desenvolvedora</p>";
+            } ?>
 
 
             <label for="nome">Nome:</label>
@@ -147,21 +159,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <select name='cat' id='cat' required>
                 <option value='Acao'>Ação</option>
                 <option value='Aventura'>Aventura</option>
-                <option value='FPS' >FPS</option>
-                <option value='RPG' >RPG</option>
+                <option value='FPS'>FPS</option>
+                <option value='RPG'>RPG</option>
                 <option value='MMORPG'>MMORPG</option>
                 <option value='Estrategia'>Estratégia</option>
-                <option value='Esporte' >Esporte</option>
-                <option value='Corrida' >Corrida</option>
-                <option value='Luta' >Luta</option>
+                <option value='Esporte'>Esporte</option>
+                <option value='Corrida'>Corrida</option>
+                <option value='Luta'>Luta</option>
                 <option value='Plataforma'>Plataforma</option>
-                <option value='SoulsBorn' >SoulsBorn</option>
+                <option value='SoulsBorn'>SoulsBorn</option>
                 <option value='Metroidvania'>Metroidvania</option>
-                <option value='Mundo Aberto' >Mundo Aberto</option>
-                <option value='Sandbox' >Sandbox</option>
-                <option value='VR' >VR</option>
+                <option value='Mundo Aberto'>Mundo Aberto</option>
+                <option value='Sandbox'>Sandbox</option>
+                <option value='VR'>VR</option>
                 <option value='Simulator'>Simulator</option>
-                <option value='Casual' >Casual</option>
+                <option value='Casual'>Casual</option>
             </select>
 
 
@@ -170,5 +182,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
 
 </body>
-    <script src="../js//voltar.js"> </script>
+<script src="../js/voltar.js"> </script>
+
 </html>

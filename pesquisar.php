@@ -17,20 +17,14 @@ if (isset($_SESSION['adm'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cat'])) {
    $pesquisa = $_POST['txtPesquisa'];
+   $cat = $_POST['cat'];
    $jogos = "null";
-
-}
-
-if (isset($_SESSION['adm'])) {
-   echo "<button type='button'><a href='login.php'>Logara</a></button>";
-} else if (isset($_SESSION['usu'])) {
-   echo "<button type='button'><a href='login.php'>Logaru</a></button>";
-} else if (isset($_SESSION['des'])) {
-   echo "<button type='button'><a href='login.php'>Logard</a></button>";
-} else {
-   echo "<button type='button'><a href='login.php'>Logar</a></button>";
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+   $pesquisa = $_POST['txtPesquisa'];
+   $cat = "";
+   $jogos = "null";
 }
 
 ?>
@@ -41,14 +35,71 @@ if (isset($_SESSION['adm'])) {
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Result For: <?php echo $pesquisa;?></title>
+   <title>Result For: <?php echo $pesquisa; ?></title>
+   <link rel="stylesheet" href="./css/pesquisar.css">
 </head>
 
 <body>
    <header>
+      <div><a href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></a>
+         <h1>Maets</h1>
+      </div>
+      <div>
+         <form action='pesquisar.php' method='post'>
+            <input type='text' placeholder='pesquise' name='txtPesquisa'>
+            <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
+         </form>
+         <?php
+
+         switch ($logado) {
+            case isset($_SESSION['adm']):
 
 
+               echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+               break;
 
+            case isset($_SESSION['usu']):
+
+               echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+               break;
+
+            default:
+
+               echo "<a href='login.php'>login</a>";
+               break;
+         }
+         ?>
+
+
+         <button class="menu-btn">&#9776;</button>
+      </div>
+      <div class="menu" id="menu">
+         <?php
+         switch ($logado) {
+            case isset($_SESSION['adm']):
+               echo "<a href='logout.php'>logout</a>";
+               echo "<a href='editar.php?cargo=2&id=" . $logado['idAdm'] . "'>editar conta</a>";
+
+               echo "<a href='./adm/centralAdm.php'>central de controle</a>";
+               break;
+
+            case isset($_SESSION['usu']):
+
+               echo "<a href='editar.php?cargo=1&id=" . $logado['idUsuario'] . "'> Editar conta </a> ";
+               echo "<a href='logout.php'>logout</a>";
+
+               break;
+
+
+            default:
+               echo "<a href='login.php'>login</a>";
+               break;
+         }
+
+
+         ?>
+         <button id="close-menu" style="margin-top: 20px;">Fechar</button>
+      </div>
    </header>
 
    <main>
@@ -57,7 +108,8 @@ if (isset($_SESSION['adm'])) {
          $row = [];
          ?>
 
-         <?php if ($pesquisa !== "" || $pesquisa !== " "):
+         
+         <?php if ($pesquisa !== "" && $cat == "" || $pesquisa !== " " && $cat == ""):
             $jogos = $jogosDB->pesquisarNome($pesquisa);
 
             while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -91,7 +143,14 @@ if (isset($_SESSION['adm'])) {
 
                echo "</div></div>"; ?>
 
-            <?php endwhile; else :
+            <?php endwhile;
+
+
+
+
+
+
+         else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") :
             $jogos = $jogosDB->ler();
             while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
 
@@ -128,10 +187,51 @@ if (isset($_SESSION['adm'])) {
          endif; ?>
 
 
+
+
+      </section>
+
+      <section>
+
+         <form action="pesquisar.php" method="POST">
+            <input type="text" name="txtPesquisa" value="<?php echo "$pesquisa"; ?>" hidden>
+
+            <label for="cat">Categória/Gênero:</label>
+            <select name='cat' id='cat' required>
+
+            <?php if($cat != "") {
+            echo "<option value='".$cat."'>".$cat."</option>";
+            }
+            ?>
+               <option value=''>Nenhuma</option>
+               
+               <option value='Acao'>Ação</option>
+               <option value='Aventura'>Aventura</option>
+               <option value='FPS'>FPS</option>
+               <option value='RPG'>RPG</option>
+               <option value='MMORPG'>MMORPG</option>
+               <option value='Estrategia'>Estratégia</option>
+               <option value='Esporte'>Esporte</option>
+               <option value='Corrida'>Corrida</option>
+               <option value='Luta'>Luta</option>
+               <option value='Plataforma'>Plataforma</option>
+               <option value='SoulsBorn'>SoulsBorn</option>
+               <option value='Metroidvania'>Metroidvania</option>
+               <option value='Mundo Aberto'>Mundo Aberto</option>
+               <option value='Sandbox'>Sandbox</option>
+               <option value='VR'>VR</option>
+               <option value='Simulator'>Simulator</option>
+               <option value='Casual'>Casual</option>
+            </select>
+            <button type="submit">Filtrar</button>
+         </form>
+
       </section>
 
    </main>
 
 </body>
+
+<script src="./js/index.js"></script>
 
 </html>
