@@ -4,9 +4,19 @@ include_once '../db/config.php';
 include_once '../class/Usuario.php';
 include_once '../class/Administrador.php';
 include_once '../class/Desenvolvedora.php';
+include_once '../class/Jogos.php';
 $tela=null;
-$adm = new Administrador($db);
 $logado = "null";
+$mensagem = "";
+
+$usu = new Usuario($db);
+$adm = new Administrador($db);
+$des = new Desenvolvedora($db);
+$jogosDB = new Jogo($db);
+
+$dadosUsu = $usu->ler();
+$dadosAdm = $adm->ler();
+$dadosDes = $des->ler();
 
 if (!isset($_SESSION['adm'])) {
     header('Location: index.php');
@@ -14,31 +24,34 @@ if (!isset($_SESSION['adm'])) {
 }
     $logado = $_SESSION['adm'];
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(isset($_POST['id'])){
-        
-$adm->registrar($_POST['id']);
-    }
     if(isset($_POST['acao'])){
     $tela = isset($_POST['acao']) ? $_POST['acao'] : '';
     }
     
 
     
+        if(isset($_POST['id'])){
+    
+        while ($row = $dadosAdm->fetch(PDO::FETCH_ASSOC)) :
+            if($row['fk_usuario']!= $_POST['id']){
+
+            $adm->registrar($_POST['id']);
+            }else{
+          $mensagem = "Adiministrador ja registrado";
+            };
+            
+        endwhile;
+        }
+    
 }
 
 // Processar exclusão de usuário
 
 
-$usu = new Usuario($db);
-$adm = new Administrador($db);
-$des = new Desenvolvedora($db);
 
-$dadosUsu = $usu->ler();
-$dadosAdm = $adm->ler();
-$dadosDes = $des->ler();
 
 ?>
 <!DOCTYPE html>
@@ -174,7 +187,9 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
      </table></div>
      </section>
         
-
+<div>
+    <a href="../cadastro.php">cadastrar novo <b>usuario</b> / <b> desenvolvedora</b></a>
+</div>
 
 
   <?php break;
@@ -182,12 +197,55 @@ $admInfo=$usu->lerPorId( $row['fk_usuario']);
 
 <section class="jogo">
 <h1>coisas dos jogos</h1>
+
+             <?php
+
+                $jogos = $jogosDB->ler();
+                
+                $row = [];
+               
+                while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) :
+
+                    echo "<div id='ListaJogos'>";
+                    
+                    echo "<div id='imagem'><img src='../uploads/". $row['ImgJogo']."' alt='Foto do ".$row['nomeJogo']."'></div>";
+
+                    echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
+                    echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+                    
+                    $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
+
+                    echo "<p> Por: " . $jogo['nomeDes'] ."</p><br><br>";
+
+                    if($row['idadeCategJogo'] < 10){
+                        echo "<img src='../assets/livreAnos.png' alt='Classificação Livre'><br><br>";
+                    } else if($row['idadeCategJogo'] < 12){
+                        echo "<img src='../assets/dezAnos.png' alt='Classificação 12 Anos'><br><br>";
+                    }else if($row['idadeCategJogo'] < 14){
+                        echo "<img src='../assets/dozeAnos.png' alt='Classificação 14 Anos'><br><br>";
+                    }else if($row['idadeCategJogo'] < 16){
+                        echo "<img src='../assets/quatorzeAnos.png' alt='Classificação 16 Anos'><br><br>";
+                    }else if($row['idadeCategJogo'] < 18){
+                        echo "<img src='../assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
+                    }else {
+                        echo "<img src='../assets/dezoitoAnos.png' alt='Classificação 16 Anos'><br><br>";
+                    }
+
+                    echo "</div></div>"; 
+
+              endwhile; ?>
+             <div>
+             <a href="../desenvolvedora/addJogo.php">cadastrar novo <b>Jogo</b></a>
+             </div>
 </section>
+
+
 
     <?php break;
 
     default:
-     
+
+     echo $mensagem;
 }
 ?>
     

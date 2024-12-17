@@ -85,15 +85,27 @@ a img{
     main div{
 text-align: center;
     }
+    b{
+        color:rgb(178, 20, 178)
+    }
     .usuarios{
         display: flex;
         flex-direction: column;
     align-items: center;
     }
+    main a{
+    text-decoration: none;
+    color: aliceblue;
+    background-color: black;
+    padding: 10px;
+    border-radius: 30px;
+    font-size: 20px;
+    }
     main{
         display: flex;
-        flex-direction: column;
-        align-items: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
     }
     header button {
         cursor:  grab;

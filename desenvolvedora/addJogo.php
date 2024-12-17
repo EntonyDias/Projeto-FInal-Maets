@@ -17,12 +17,10 @@ $admTrue = isset($_SESSION['adm']);
 if (isset($_SESSION['adm'])) {
     $logado = $_SESSION['adm'];
 
-    $dados_des = $des->lerPorId($_GET['idDes']);
-
     //Des
 } else if (isset($_SESSION['des'])) {
     $logado = $_SESSION['des'];
-    $dados_des = $des->lerPorId($logado['idDes']);
+
 
     //Usu
 } else if (isset($_SESSION['usu'])) {
@@ -67,8 +65,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $jogo->registrar($nome, $nomeImagem, $descricao, $preco, $idade, $fk_desenvolvedora, $categoriaJogo);
+        
+        if (isset($_SESSION['adm'])){
 
-        header('Location: ');
+            header("location : ../adm/centralAdm.php ");
+            exit();
+            
+        } else if (isset($_SESSION['des'])) {
+            
+            
+            header("location : gerenciarDes.php ");
+        
+        exit();
+        
+        }
+        
     }
 }
 
