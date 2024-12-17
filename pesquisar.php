@@ -21,11 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $pesquisa = $_POST['txtPesquisa'];
    $jogos = "null";
 
-   if ($pesquisa == "" || $pesquisa == " ") {
-      $jogos = $jogosDB->listarTodos();
-   } else {
-      $jogos = $jogosDB->pesquisarNome($pesquisa);
-   }
 }
 
 if (isset($_SESSION['adm'])) {
@@ -38,9 +33,6 @@ if (isset($_SESSION['adm'])) {
    echo "<button type='button'><a href='login.php'>Logar</a></button>";
 }
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +41,7 @@ if (isset($_SESSION['adm'])) {
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pesquisa</title>
+   <title>Result For: <?php echo $pesquisa;?></title>
 </head>
 
 <body>
@@ -62,44 +54,78 @@ if (isset($_SESSION['adm'])) {
    <main>
       <section class="jogos">
          <?php
-
-         $jogos = $jogosDB->ler();
-
          $row = [];
          ?>
 
-         <?php while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
+         <?php if ($pesquisa !== "" || $pesquisa !== " "):
+            $jogos = $jogosDB->pesquisarNome($pesquisa);
 
-            <?php
-            echo "<div id='ListaJogos'>";
+            while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
 
-            echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
+               <?php
+               echo "<div id='ListaJogos'>";
 
-            echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
-            echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+               echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
 
-            $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
+               echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
+               echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
 
-            echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
+               $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
 
-            if ($row['idadeCategJogo'] < 10) {
-               echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
-            } else if ($row['idadeCategJogo'] < 12) {
-               echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
-            } else if ($row['idadeCategJogo'] < 14) {
-               echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
-            } else if ($row['idadeCategJogo'] < 16) {
-               echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
-            } else if ($row['idadeCategJogo'] < 18) {
-               echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
-            } else {
-               echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
-            }
+               echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
+
+               if ($row['idadeCategJogo'] < 10) {
+                  echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
+               } else if ($row['idadeCategJogo'] < 12) {
+                  echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 14) {
+                  echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 16) {
+                  echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 18) {
+                  echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
+               } else {
+                  echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
+               }
 
 
-            echo "</div></div>"; ?>
+               echo "</div></div>"; ?>
 
-         <?php endwhile; ?>
+            <?php endwhile; else :
+            $jogos = $jogosDB->ler();
+            while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
+
+         <?php
+               echo "<div id='ListaJogos'>";
+
+               echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
+
+               echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
+               echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+
+               $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
+
+               echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
+
+               if ($row['idadeCategJogo'] < 10) {
+                  echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
+               } else if ($row['idadeCategJogo'] < 12) {
+                  echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 14) {
+                  echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 16) {
+                  echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
+               } else if ($row['idadeCategJogo'] < 18) {
+                  echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
+               } else {
+                  echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
+               }
+
+
+               echo "</div></div>";
+
+            endwhile;
+         endif; ?>
 
 
       </section>

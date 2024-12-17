@@ -62,8 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <div>
-            <img id="logo" src="./assets/logoTop.png" alt="">
+        <div><a href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></a>
             <h1>Login</h1>
          
         </div>

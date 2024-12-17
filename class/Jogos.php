@@ -55,28 +55,28 @@ class Jogo {
         $query = "SELECT * FROM ".$this->table_name;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function pesquisarNome($nome){
         $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%'";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+        return $stmt;
     }
 
     public function pesquisarCatalogo($cat){
         $query = "SELECT * FROM ". $this->table_name ." WHERE categoriaJogo = ".$cat;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function pesquisarNomeECatalogo($nome, $cat){
         $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%' AND categoriaJogo = ".$cat;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll (PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 //SELECT * FROM tb_jogos JOIN tb_desenvolvedoras ON tb_jogos.fk_desenvolvedora = tb_desenvolvedoras.idDes where idDes = 1

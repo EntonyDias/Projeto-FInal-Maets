@@ -16,11 +16,12 @@ $admTrue = isset($_SESSION['adm']);
 //Adm
 if (isset($_SESSION['adm'])) {
     $logado = $_SESSION['adm'];
+    $dados_des = $des->lerPorId($_GET['idDes']);
 
     //Des
 } else if (isset($_SESSION['des'])) {
     $logado = $_SESSION['des'];
-
+    $dados_des = $des->lerPorId($logado['idDes']);
 
     //Usu
 } else if (isset($_SESSION['usu'])) {
@@ -68,15 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if (isset($_SESSION['adm'])){
 
-            header("location : ../adm/centralAdm.php ");
-            exit();
+            header('location: ../adm/centralAdm.php');
             
         } else if (isset($_SESSION['des'])) {
             
             
-            header("location : gerenciarDes.php ");
-        
-        exit();
+            header('location: ./gerenciarDes.php');
         
         }
         
