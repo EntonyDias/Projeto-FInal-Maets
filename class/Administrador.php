@@ -39,8 +39,14 @@ class Administrador {
         return $stmt; 
     } 
 
+    public function lerPorUsuario($id) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE fk_usuario = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public function lerPorId($id) {
-        $query = "SELECT * FROM " . $this->table_name . " WHERE fk_Usuario = ?";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE idAdm = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);

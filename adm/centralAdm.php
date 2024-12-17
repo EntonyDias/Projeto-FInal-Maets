@@ -19,7 +19,7 @@ $dadosAdm = $adm->ler();
 $dadosDes = $des->ler();
 
 if (!isset($_SESSION['adm'])) {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
     $logado = $_SESSION['adm'];
