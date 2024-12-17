@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cat'])) {
    $pesquisa = $_POST['txtPesquisa'];
    $cat = $_POST['cat'];
    $jogos = "null";
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $pesquisa = $_POST['txtPesquisa'];
    $cat = "";
    $jogos = "null";
@@ -104,87 +104,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cat'])) {
 
    <main>
       <section class="jogos">
-         <?php
-         $row = [];
-         ?>
 
-         
-         <?php if ($pesquisa !== "" && $cat == "" || $pesquisa !== " " && $cat == ""):
+         <?php
+
+         $row = [];
+
+         if ($pesquisa !== "" && $cat == "" || $pesquisa !== " " && $cat == "") {
             $jogos = $jogosDB->pesquisarNome($pesquisa);
 
-            while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
-
-               <?php
-               echo "<div id='ListaJogos'>";
-
-               echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
-
-               echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
-               echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
-
-               $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
-
-               echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
-
-               if ($row['idadeCategJogo'] < 10) {
-                  echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
-               } else if ($row['idadeCategJogo'] < 12) {
-                  echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 14) {
-                  echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 16) {
-                  echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 18) {
-                  echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
-               } else {
-                  echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
-               }
-
-
-               echo "</div></div>"; ?>
-
-            <?php endwhile;
-
-
-
-
-
-
-         else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") :
+         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
             $jogos = $jogosDB->ler();
-            while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
 
-         <?php
-               echo "<div id='ListaJogos'>";
+         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
+            $jogos = $jogosDB->ler();
 
-               echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
+         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
+            $jogos = $jogosDB->ler();
+         }
 
-               echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
-               echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+         if ($jogos != "null") :
+         while ($row = $jogos->fetch(PDO::FETCH_ASSOC)) : ?>
 
-               $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
+            <?php
+            echo "<div id='ListaJogos'>";
 
-               echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
+            echo "<div id='imagem'><img src='./uploads/" . $row['ImgJogo'] . "' alt='Foto do " . $row['nomeJogo'] . "'></div>";
 
-               if ($row['idadeCategJogo'] < 10) {
-                  echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
-               } else if ($row['idadeCategJogo'] < 12) {
-                  echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 14) {
-                  echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 16) {
-                  echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
-               } else if ($row['idadeCategJogo'] < 18) {
-                  echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
-               } else {
-                  echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
-               }
+            echo "<div id='nome'><h1>" . $row['nomeJogo'] . "</h1><br><br></div>";
+            echo "<div id='precoDiv'> <p id='precoDiv'>" . $row['precoJogo'] . "</p></div><br><br>";
+
+            $jogo = $jogosDB->infosComDesenvolvedoras($row['fk_desenvolvedora']);
+
+            echo "<p> Por: " . $jogo['nomeDes'] . "</p><br><br>";
+
+            if ($row['idadeCategJogo'] < 10) {
+               echo "<img src='./assets/livreAnos.png' alt='Classificação Livre'><br><br>";
+            } else if ($row['idadeCategJogo'] < 12) {
+               echo "<img src='./assets/dezAnos.png' alt='Classificação 10 Anos'><br><br>";
+            } else if ($row['idadeCategJogo'] < 14) {
+               echo "<img src='./assets/dozeAnos.png' alt='Classificação 12 Anos'><br><br>";
+            } else if ($row['idadeCategJogo'] < 16) {
+               echo "<img src='./assets/quatorzeAnos.png' alt='Classificação 14 Anos'><br><br>";
+            } else if ($row['idadeCategJogo'] < 18) {
+               echo "<img src='./assets/dezesseisAnos.png' alt='Classificação 16 Anos'><br><br>";
+            } else {
+               echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 18 Anos'><br><br>";
+            }
 
 
-               echo "</div></div>";
+            echo "</div></div>"; ?>
 
-            endwhile;
-         endif; ?>
+         <?php endwhile; endif; ?>
+
 
 
 
@@ -199,12 +170,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cat'])) {
             <label for="cat">Categória/Gênero:</label>
             <select name='cat' id='cat' required>
 
-            <?php if($cat != "") {
-            echo "<option value='".$cat."'>".$cat."</option>";
-            }
-            ?>
+               <?php if ($cat != "") {
+                  echo "<option value='" . $cat . "'>" . $cat . "</option>";
+               }
+               ?>
                <option value=''>Nenhuma</option>
-               
+
                <option value='Acao'>Ação</option>
                <option value='Aventura'>Aventura</option>
                <option value='FPS'>FPS</option>
