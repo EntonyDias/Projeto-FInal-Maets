@@ -110,14 +110,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cat'])) {
 
          $row = [];
 
-         if ($pesquisa !== "" && $cat == "" || $pesquisa !== " " && $cat == "") {
+         //
+         if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
+            $jogos = $jogosDB->ler();
+         } else if ($pesquisa !== "" && $cat == "" || $pesquisa !== " " && $cat == "") {
             $jogos = $jogosDB->pesquisarNome($pesquisa);
-         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
-            $jogos = $jogosDB->ler();
-         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
-            $jogos = $jogosDB->ler();
-         } else if ($pesquisa == "" && $cat == "" || $pesquisa == " " && $cat == "") {
-            $jogos = $jogosDB->ler();
+         } else if ($pesquisa == "" && $cat !== "" || $pesquisa == " " && $cat !== "") {
+            $jogos = $jogosDB->pesquisarCatalogo($cat);
+         } else if ($pesquisa !== "" && $cat !== "" || $pesquisa !== " " && $cat !== "") {
+            $jogos = $jogosDB->pesquisarNomeECatalogo($pesquisa, $cat);
          }
 
          if ($jogos != "null") :

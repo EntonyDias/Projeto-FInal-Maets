@@ -66,20 +66,18 @@ class Jogo {
     }
 
     public function pesquisarCatalogo($cat){
-        $query = "SELECT * FROM ". $this->table_name ." WHERE categoriaJogo = ".$cat;
+        $query = "SELECT * FROM ". $this->table_name ." WHERE categoriaJogo = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([$cat]);
+        return $stmt;
     }
 
     public function pesquisarNomeECatalogo($nome, $cat){
-        $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%' AND categoriaJogo = ".$cat;
+        $query = "SELECT * FROM ". $this->table_name ." WHERE nomeJogo LIKE '%".$nome."%' AND categoriaJogo = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([$cat]);
+        return $stmt;
     }
-
-//SELECT * FROM tb_jogos JOIN tb_desenvolvedoras ON tb_jogos.fk_desenvolvedora = tb_desenvolvedoras.idDes where idDes = 1
 
     public function infosComDesenvolvedoras($fk){
         $query = "SELECT * FROM ". $this->table_name ." JOIN ".$this->table_des ." ON " . $this->table_name.".fk_desenvolvedora = ". $this->table_des . ".idDes WHERE idDes = ?";
