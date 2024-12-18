@@ -37,7 +37,7 @@
  <body>
      <header>
          <div>
-             <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
+         <a href="./index.php" class="logo"><img id="logo" src="./assets/logoTop.png" alt="Logo"></a>
              <h1>Maets</h1>
          </div>
          <div>

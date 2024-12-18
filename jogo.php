@@ -36,15 +36,25 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
 <body>
 
    <header>
-      <div>
-         <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
+      <div> <?php if (isset($_SESSION['des'])) {
+               echo "<a href='./desenvolvedora/gerenciarDes.php' class='logo'><img id='logo' src='./assets/logoTop.png' alt='Logo'></a>";
+            } else {
+               echo "<a href='./index.php' class='logo'><img id='logo' src='./assets/logoTop.png' alt='Logo'></a>";
+            } ?>
          <h1>Maets</h1>
       </div>
       <div>
-         <form action='pesquisar.php' method='post'>
+
+         <?php if (!isset($_SESSION['des'])) {
+            echo "
+            <form action='pesquisar.php' method='post'>
             <input type='text' placeholder='pesquise' name='txtPesquisa'>
             <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-         </form>
+         </form>";
+         }
+
+
+         ?>
          <?php
 
          switch ($logado) {
@@ -57,6 +67,10 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
             case isset($_SESSION['usu']):
 
                echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+               break;
+
+            case isset($_SESSION['des']):
+
                break;
 
             default:
@@ -86,6 +100,16 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
 
                break;
 
+            case isset($_SESSION['des']):
+
+                  echo "<a href='../desenvolvedora/addJogo.php?idDes=" . $logado['idDes'] . "'>Adicionar Jogo</a>";
+                  echo "<a href='./editar.php?cargo=3&id=" . $logado['idDes'] . "'>Editar Conta</a>";
+                  echo "<a href='./desenvolvedora/gerenciarDes.php'>Central Desenvolvedora</a>";
+                  echo "<a href='./logout.php'>Logout</a>";
+                  break;
+
+               break;
+
 
             default:
                echo "<a href='login.php'>login</a>";
@@ -99,6 +123,8 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
    </header>
 
    <main>
+   <button id="backBtn"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>
+
       <?php
       echo "<div id='dadosJogo'>";
 
@@ -132,5 +158,6 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
    </main>
 </body>
 <script src="./js/index.js"></script>
+<script src="./js/voltar.js"></script>
 
 </html>

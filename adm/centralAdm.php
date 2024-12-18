@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <button class="logo" href="../index.php"><img id="logo" src="../assets/logoTop.png" alt=""></button>
+    <a href="../index.php" class="logo"><img id="logo" src="../assets/logoTop.png" alt="Logo"></a>
         <h1>Central do administrador</h1>
         <div>
             <form action="" method="post">

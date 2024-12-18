@@ -28,7 +28,8 @@ if (isset($_SESSION['adm'])) {
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula" && isset($_FILES['imagem'])) {
 
 
     $nome = $_POST['nome'];
@@ -77,6 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
             exit();
         }
     }
+} else {
+    $imagem = "nula";
 }
 
 
@@ -95,7 +98,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
 
 <body>
     <header>
-        <div><button class="logo" href="./index.php"><img id="logo" src="../assets/logoTop.png" alt=""></button>
+        <div>
+        <?php if (isset($_SESSION['des'])) {
+               echo "<a href='./gerenciarDes.php' class='logo'><img id='logo' src='../assets/logoTop.png' alt='Logo'></a>";
+            } else {
+               echo "<a href='../index.php' class='logo'><img id='logo' src='./assets/logoTop.png' alt='Logo'></a>";
+            } ?>
             <h1>Adicionar seu jogo</h1>
         </div>
     </header>
@@ -145,9 +153,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
             <label class="imagemLabel" for="imagem">Escolher Imagem</label>
             <input type="file" name="imagem" id="imagem" />
 
+            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['imagem'])) {
+                echo "<p>Selecione uma Imagem</p>";
+            } ?>
 
             <label for="descricao">Descrição:</label>
-            <textarea name="descricao" id="descricao" placeholder="Escreva sua descrição aqui..."></textarea>
+            <textarea name="descricao" id="descricao" placeholder="Escreva sua descrição aqui..." required></textarea>
 
 
             <label for="preco">Preço:</label>

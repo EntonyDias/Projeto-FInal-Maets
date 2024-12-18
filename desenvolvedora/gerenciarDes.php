@@ -49,7 +49,7 @@ $jogos = $jogo->ler();
 <body>
 
    <header>
-      <button class="logo" href="./gereciarDes.php"><img id="logo" src="../assets/logoTop.png" alt=""></button>
+   <a href="./gerenciarDes.php" class="logo"><img id="logo" src="../assets/logoTop.png" alt="Logo"></a>
 
       <h1>Central de Desenvolvedora</h1>
       <div>

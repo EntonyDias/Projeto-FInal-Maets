@@ -150,7 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div>
-            <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
+            <?php if(isset($_SESSION['des'])){
+                echo "<a href='./desenvolvedora/gerenciarDes.php' class='logo'><img id='logo' src='./assets/logoTop.png' alt='Logo'></a>";
+            } else { echo "<a href='./index.php' class='logo'><img id='logo' src='./assets/logoTop.png' alt='Logo'></a>";
+            };?>
+        
             <h1>Cadastro</h1>
         </div>
     </header>
