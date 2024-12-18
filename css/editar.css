@@ -44,6 +44,16 @@ header div {
     height: 100px;
 }
 
+.logo {
+    height: 107px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+    border-radius: 50%;
+}
+
 #voltar {
     margin-right: 0;
 }
@@ -102,40 +112,57 @@ img {
     width: 30px;
 
 }
+
 a img {
     margin-top: 10px;
     height: 50px;
     width: 50px;
-border-radius: 100vh;
+    border-radius: 100vh;
 }
 
 
-p{
+p {
     justify-items: center;
     color: silver;
     width: 250px;
 }
-p a{
+
+p a {
     justify-items: center;
     color: rgb(128, 0, 128);
     width: 250px;
 }
+
 /* Estilização geral para o select */
 select {
-    width: 250px; /* Largura desejada */
-    padding: 10px; /* Espaçamento interno */
-    border: 2px solid #555; /* Borda com destaque */
-    border-radius: 8px; /* Borda arredondada */
-    background-color: #121212; /* Fundo escuro */
-    color: white; /* Cor do texto */
-    font-size: 1rem; /* Tamanho da fonte */
-    outline: none; /* Remove borda azul ao focar */
-    cursor: pointer; /* Mostra o cursor de clique */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para destaque */
-    appearance: none; /* Remove o estilo padrão do navegador */
-    -webkit-appearance: none; /* Para navegadores baseados em WebKit */
-    -moz-appearance: none; /* Para Firefox */
-    background-image: url('https://cdn-icons-png.flaticon.com/512/2985/2985150.png'); /* Ícone da seta */
+    width: 250px;
+    /* Largura desejada */
+    padding: 10px;
+    /* Espaçamento interno */
+    border: 2px solid #555;
+    /* Borda com destaque */
+    border-radius: 8px;
+    /* Borda arredondada */
+    background-color: #121212;
+    /* Fundo escuro */
+    color: white;
+    /* Cor do texto */
+    font-size: 1rem;
+    /* Tamanho da fonte */
+    outline: none;
+    /* Remove borda azul ao focar */
+    cursor: pointer;
+    /* Mostra o cursor de clique */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    /* Sombra para destaque */
+    appearance: none;
+    /* Remove o estilo padrão do navegador */
+    -webkit-appearance: none;
+    /* Para navegadores baseados em WebKit */
+    -moz-appearance: none;
+    /* Para Firefox */
+    background-image: url('https://cdn-icons-png.flaticon.com/512/2985/2985150.png');
+    /* Ícone da seta */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 16px;
@@ -143,37 +170,51 @@ select {
 
 /* Alteração do estilo ao focar */
 select:focus {
-    border-color: rgb(128, 0, 128); /* Muda a cor da borda ao focar */
-    box-shadow: 0 0 5px rgb(201, 20, 201); /* Efeito brilhante ao focar */
+    border-color: rgb(128, 0, 128);
+    /* Muda a cor da borda ao focar */
+    box-shadow: 0 0 5px rgb(201, 20, 201);
+    /* Efeito brilhante ao focar */
 }
 
 /* Estilização dos options */
 option {
-    background-color: rgb(0, 0, 0); /* Fundo escuro */
-    color: white; /* Cor do texto */
-    padding: 10px; /* Espaçamento interno */
-    font-size: 1rem; /* Tamanho da fonte */
-    border: none; /* Remove bordas */
+    background-color: rgb(0, 0, 0);
+    /* Fundo escuro */
+    color: white;
+    /* Cor do texto */
+    padding: 10px;
+    /* Espaçamento interno */
+    font-size: 1rem;
+    /* Tamanho da fonte */
+    border: none;
+    /* Remove bordas */
 }
 
 /* Estilo para a tag <select> */
 select {
-    width: 100%; /* Ocupa toda a largura do contêiner pai */
+    width: 100%;
+    /* Ocupa toda a largura do contêiner pai */
     padding: 10px;
     border: 1px solid #555;
     border-radius: 5px;
-    background-color: #1a1a1a; /* Fundo escuro */
-    color: white; /* Texto branco */
+    background-color: #1a1a1a;
+    /* Fundo escuro */
+    color: white;
+    /* Texto branco */
     font-size: 1em;
-    outline: none; /* Remove o contorno padrão */
-    appearance: none; /* Remove o estilo padrão do navegador */
+    outline: none;
+    /* Remove o contorno padrão */
+    appearance: none;
+    /* Remove o estilo padrão do navegador */
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    /* Sombra suave */
 }
 
 /* Adiciona um ícone de seta para o select */
 select::after {
-    content: "▼"; /* Ícone de seta */
+    content: "▼";
+    /* Ícone de seta */
     font-size: 0.8em;
     position: absolute;
     right: 10px;
@@ -182,15 +223,18 @@ select::after {
 
 /* Estilo para as opções <option> */
 select option {
-    background-color: #1a1a1a; /* Fundo escuro */
-    color: white; /* Texto branco */
+    background-color: #1a1a1a;
+    /* Fundo escuro */
+    color: white;
+    /* Texto branco */
     font-size: 1em;
     padding: 10px;
 }
 
 /* Efeito ao passar o mouse sobre as opções */
 select option:hover {
-    background-color: #333; /* Fundo mais claro */
+    background-color: #333;
+    /* Fundo mais claro */
 }
 
 /* Estilo geral do formulário */
@@ -241,16 +285,17 @@ select option:hover {
     /* Destaque roxo ao focar */
 }
 
-button{
+button {
     background-color: rgba(240, 248, 255, 0);
     border-color: rgba(240, 248, 255, 0);
-    }
-    
-    button img{
-        width: 50px;
-        height: 50px;
-        border-radius: 100vh;
-    }
+}
+
+button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100vh;
+}
+
 /* Estilo para o botão de envio */
 #button {
     width: 100%;

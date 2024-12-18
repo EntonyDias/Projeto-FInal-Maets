@@ -95,22 +95,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
 
 <body>
     <header>
-        <h1>Adicionar seu jogo</h1>
+        <div><button class="logo" href="./index.php"><img id="logo" src="../assets/logoTop.png" alt=""></button>
+            <h1>Adicionar seu jogo</h1>
+        </div>
     </header>
 
     <?php
-        if (isset($_SESSION['adm'])) {
+    if (isset($_SESSION['adm'])) {
 
-            echo "<a href='../adm/centralAdm.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
+        echo "<a href='../adm/centralAdm.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
+    } else if (isset($_SESSION['des'])) {
 
-        } else if (isset($_SESSION['des'])) {
-
-            echo "<a href='./gerenciarDes.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
-
-        }
+        echo "<a href='./gerenciarDes.php'><img src='https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid' alt='Botão de voltar'></a>";
+    }
     ?>
     <main>
-        <img id="logo" src="https://png.pngtree.com/png-vector/20230909/ourmid/pngtree-cool-emoticon-cut-out-png-image_9222499.png" alt="">
 
 
         <form method="POST" action="./addJogo.php" enctype="multipart/form-data">
@@ -143,11 +142,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['desen'] != "nula") {
             <label for="nome">Nome:</label>
             <input type="text" name="nome" id="nome" required placeholder="Nome do Game">
 
-            <label for="imagem">Imagem:</label>
-            <input type="file" name="imagem" id="imagem" required>
+            <label class="imagemLabel" for="imagem">Escolher Imagem</label>
+            <input type="file" name="imagem" id="imagem" />
+
 
             <label for="descricao">Descrição:</label>
-            <textarea name="descricao" id="descricao" required placeholder="Descrição do jogo" rows="8" cols="8"></textarea>
+            <textarea name="descricao" id="descricao" placeholder="Escreva sua descrição aqui..."></textarea>
+
 
             <label for="preco">Preço:</label>
             <input type="number" name="preco" id="preco" required>

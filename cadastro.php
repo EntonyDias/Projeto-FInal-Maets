@@ -42,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <header>
         <div>
-            <img id="logo" src="./assets/logoTop.png" alt="LogoTop">
+            <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
             <h1>Cadastro</h1>
         </div>
     </header>
-    <button id="backBtn" ><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>
+    <button id="backBtn"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></button>
     <main>
         <form id="formulario" method="POST">
             <label for="cargo">Tipo de usuario:</label>

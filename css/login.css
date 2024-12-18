@@ -43,7 +43,15 @@ header div {
     width: 100px;
     height: 100px;
 }
-
+.logo {
+    height: 107px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+    border-radius: 50%;
+}
 #voltar {
     margin-right: 0;
 }

@@ -35,69 +35,70 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
 
 <body>
 
-<header>
-         <div><a href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></a>
-             <h1>Maets</h1>
-         </div>
-         <div>
-             <form action='pesquisar.php' method='post'>
-                 <input type='text' placeholder='pesquise' name='txtPesquisa'>
-                 <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
-             </form>
-             <?php
+   <header>
+      <div>
+         <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
+         <h1>Maets</h1>
+      </div>
+      <div>
+         <form action='pesquisar.php' method='post'>
+            <input type='text' placeholder='pesquise' name='txtPesquisa'>
+            <button type='submit' name='btnPesquisar'><img src='https://cdn-icons-png.flaticon.com/512/64/64673.png' alt=''></button>
+         </form>
+         <?php
 
-                switch ($logado) {
-                    case isset($_SESSION['adm']):
-
-
-                        echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
-                        break;
-
-                    case isset($_SESSION['usu']):
-
-                        echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
-                        break;
-
-                    default:
-
-                        echo "<a href='login.php'>login</a>";
-                        break;
-                }
-                ?>
+         switch ($logado) {
+            case isset($_SESSION['adm']):
 
 
-             <button class="menu-btn">&#9776;</button>
-         </div>
-         <div class="menu" id="menu">
-             <?php
-                switch ($logado) {
-                    case isset($_SESSION['adm']):
-                        echo "<a href='logout.php'>logout</a>";
-                        echo "<a href='editar.php?cargo=2&id=" . $logado['idAdm'] . "'>editar conta</a>";
+               echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+               break;
 
-                        echo "<a href='./adm/centralAdm.php'>central de controle</a>";
-                        break;
+            case isset($_SESSION['usu']):
 
-                    case isset($_SESSION['usu']):
+               echo " <a href='carrinho.php'>      <img id='imagem' src='https://cdn-icons-png.flaticon.com/512/4/4295.png' alt=''></a>";
+               break;
 
-                        echo "<a href='editar.php?cargo=1&id=" . $logado['idUsuario'] . "'> Editar conta </a> ";
-                        echo "<a href='logout.php'>logout</a>";
+            default:
 
-                        break;
+               echo "<a href='login.php'>login</a>";
+               break;
+         }
+         ?>
 
 
-                    default:
-                        echo "<a href='login.php'>login</a>";
-                        break;
-                }
+         <button class="menu-btn">&#9776;</button>
+      </div>
+      <div class="menu" id="menu">
+         <?php
+         switch ($logado) {
+            case isset($_SESSION['adm']):
+               echo "<a href='logout.php'>logout</a>";
+               echo "<a href='editar.php?cargo=2&id=" . $logado['idAdm'] . "'>editar conta</a>";
+
+               echo "<a href='./adm/centralAdm.php'>central de controle</a>";
+               break;
+
+            case isset($_SESSION['usu']):
+
+               echo "<a href='editar.php?cargo=1&id=" . $logado['idUsuario'] . "'> Editar conta </a> ";
+               echo "<a href='logout.php'>logout</a>";
+
+               break;
 
 
-                ?>
-             <button id="close-menu" style="margin-top: 20px;">Fechar</button>
-         </div>
-     </header>
+            default:
+               echo "<a href='login.php'>login</a>";
+               break;
+         }
 
-<main>
+
+         ?>
+         <button id="close-menu" style="margin-top: 20px;">Fechar</button>
+      </div>
+   </header>
+
+   <main>
       <?php
       echo "<div id='dadosJogo'>";
 
@@ -105,7 +106,7 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
 
       echo "<div id='nome'><h1>" . $jogo['nomeJogo'] . "</h1><br><br></div>";
       echo "<div id='precoDiv'> <p id='precoDiv'>" . $jogo['precoJogo'] . "</p></div><br><br>";
-      
+
 
       $jogoDes = $jogosDB->infosComDesenvolvedoras($jogo['fk_desenvolvedora']);
 
@@ -124,11 +125,12 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
       } else {
          echo "<img src='./assets/dezoitoAnos.png' alt='Classificação 16 Anos'><br><br>";
       }
-      
+
       echo "<div id='descricaoDiv'> <p id='descricao'>" . $jogo['descricaoJogo'] . "</p></div><br><br>";
 
       echo "</div>"; ?>
    </main>
 </body>
-      <script src="./js/index.js"></script>
+<script src="./js/index.js"></script>
+
 </html>

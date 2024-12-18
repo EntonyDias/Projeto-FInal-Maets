@@ -2,120 +2,151 @@
 
     margin: 0;
 }
+
 header div {
     display: flex;
     align-items: center;
     gap: 50px;
-    
-    }
-    header form input {
-        cursor:  grab;
-        text-align: center;
-        font-size: 20px;
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        background-color: rgb(255, 255, 255);
-        padding: 10px;
-        border-radius: 30px;
-        border-color: rgb(98, 0, 128);
-        border: 5px solid rgb(56, 0, 56);
-    }
-    header {
-        color: rgb(255, 255, 255);
-        display: flex;
-        padding: 10px;
-        background-color: rgb(0, 0, 0);
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between
-    }
-    table td{
-        padding: 10px;
-    }
-    table {
-        text-align: center;
-        margin-top: 50px;
-        
-        font-size: 20px;
-        background-color: black;
-        color: white;
-        border-color: #ffffff38;
-    }
-form img{
+
+}
+
+#logo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.logo {
+    height: 107px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+    border-radius: 50%;
+}
+
+header form input {
+    cursor: grab;
+    text-align: center;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 30px;
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+}
+
+header {
+    color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+table td {
+    padding: 10px;
+}
+
+table {
+    text-align: center;
+    margin-top: 50px;
+
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border-color: #ffffff38;
+}
+
+form img {
     margin-top: 10px;
     width: 1000px;
     height: 50px;
     border-radius: 100vh;
 }
-    #links {
-        gap: 20px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-    }
 
-    #links a {
-        text-align: center;
-        width: 100px;
-        background-color: white;
-        color: black;
-        text-decoration: none;
-        font-size: 20px;
-        padding: 10px;
-        border-radius: 30px;
+#links {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-    }
-    
-a img{
+#links a {
+    text-align: center;
+    width: 100px;
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 30px;
+
+}
+
+a img {
     margin-top: 10px;
     width: 50px;
     height: 50px;
     border-radius: 100vh;
 }
-    table a img {
-        margin-left: 10px;
-        border: 3px solid white;
-        ;
-        width: 50px;
-        height: 50px;
+
+table a img {
+    margin-left: 10px;
+    border: 3px solid white;
+    ;
+    width: 50px;
+    height: 50px;
 
 
-    }
-    main div{
-text-align: center;
-    }
-    b{
-        color:rgb(178, 20, 178)
-    }
-    .usuarios{
-        display: flex;
-        flex-direction: column;
+}
+
+main div {
+    text-align: center;
+}
+
+b {
+    color: rgb(178, 20, 178)
+}
+
+.usuarios {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    }
-    main a{
+}
+
+main a {
     text-decoration: none;
     color: aliceblue;
     background-color: black;
     padding: 10px;
     border-radius: 30px;
     font-size: 20px;
-    }
-    main{
-        display: flex;
+}
+
+main {
+    display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    }
-    header button {
-        cursor:  grab;
-        font-size: 20px;
-        color: rgb(255, 255, 255);
-        background-color: rgb(0, 0, 0);
-        border-color: rgb(98, 0, 128);
-        border: 5px solid rgb(56, 0, 56);
-    
-    }
+}
+
+header button {
+    cursor: grab;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(98, 0, 128);
+    border: 5px solid rgb(56, 0, 56);
+
+}
+
 .menu button {
 
     padding: 10px;
@@ -156,24 +187,104 @@ text-align: center;
     font-size: 24px;
     margin: 10px 0;
 }
-section.jogo div{
-background-color: rgb(0, 0, 0);
-border-radius: 30px;
-padding: 10px;
-color: aliceblue;
+
+section.jogo div {
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    padding: 10px;
+    color: aliceblue;
 }
-section.jogo{
+
+section.jogo {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 10px;
 }
 
-#idade img{
+#idade img {
 
     height: 50px;
 }
-#imagem img{
+
+#imagem img {
     height: 200px;
     width: 300px;
+}
+
+body {
+    color: silver;
+
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/wallpaper.png');
+    /* Caminho da imagem */
+    background-size: cover;
+    /* Faz a imagem cobrir toda a área */
+    background-repeat: no-repeat;
+    /* Evita a repetição da imagem */
+
+
+}
+
+/* Estilos para tabelas */
+table {
+    width: 90%; /* Tabelas ocupam a maior parte da largura */
+    margin: 20px auto; /* Centraliza a tabela na página */
+    border-collapse: collapse; /* Remove espaços entre bordas */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo com leve transparência */
+    color: white; /* Texto branco */
+    font-size: 18px; /* Tamanho da fonte */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); /* Sombra sutil para destaque */
+}
+
+/* Estilo das células (td) e cabeçalhos (th) */
+table th, table td {
+    padding: 15px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas suaves */
+}
+
+/* Estilo para cabeçalhos (th) */
+table th {
+    background-color: rgb(98, 0, 128); /* Fundo roxo escuro */
+    font-size: 20px; /* Fonte um pouco maior */
+    font-weight: bold; /* Deixa o texto em negrito */
+    text-transform: uppercase; /* Deixa o texto em letras maiúsculas */
+    color: white; /* Texto branco */
+}
+
+/* Estilo para linhas alternadas */
+table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo mais claro */
+}
+
+table tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo mais escuro */
+}
+
+/* Hover nas linhas */
+table tr:hover {
+    background-color: rgba(98, 0, 128, 0.6); /* Destaque na linha ao passar o mouse */
+    cursor: pointer; /* Indica interatividade */
+}
+
+/* Ícones e links na tabela */
+table a img {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 50%; /* Ícones redondos */
+    transition: transform 0.3s ease; /* Efeito suave ao passar o mouse */
+}
+
+table a img:hover {
+    transform: scale(1.2); /* Aumenta o tamanho do ícone */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); /* Sombra para destaque */
+}
+
+/* Estilo para links na tabela */
+table a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: inherit; /* Usa a cor padrão do texto */
 }

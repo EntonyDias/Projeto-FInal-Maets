@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <div><a href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></a>
+        <div>
+            <button class="logo" href="./index.php"><img id="logo" src="./assets/logoTop.png" alt=""></button>
             <h1>Login</h1>
-         
         </div>
     </header>
     <a href="index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
