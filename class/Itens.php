@@ -3,7 +3,6 @@ class Item {
     private $conn;
     private $table_name = "tb_itens";
 
-
     public function __construct($db) {
         $this->conn = $db;
     }
@@ -49,6 +48,7 @@ class Item {
         $stmt->execute();
         return $stmt->fetchAll (PDO::FETCH_ASSOC);
 }
+
 
 }
 ?>

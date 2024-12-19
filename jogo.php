@@ -7,6 +7,7 @@ include_once './class/Usuario.php';
 include_once './class/Desenvolvedora.php';
 include_once './class/Administrador.php';
 include_once './class/Jogos.php';
+include_once './class/Itens.php';
 
 $jogosDB = new Jogo($db);
 $logado = "null";
@@ -20,7 +21,6 @@ if (isset($_SESSION['adm'])) {
 }
 
 $jogo = $jogosDB->lerPorId($_GET['id']);
-
 ?>
 
 <!DOCTYPE html>
@@ -155,7 +155,16 @@ $jogo = $jogosDB->lerPorId($_GET['id']);
       echo "<div id='descricaoDiv'> <p id='descricao'>" . $jogo['descricaoJogo'] . "</p></div><br><br>";
 
       echo "</div>"; ?>
+
+      <form action="./usuarios/carrinho.php?idJogo='<?php echo $jogo['idJogo'];?>' " method="post">
+
+         <input type="image" src="https://media.istockphoto.com/id/898475764/pt/vetorial/shopping-trolley-cart-icon-in-green-circle-vector.jpg?s=612x612&w=0&k=20&c=7UvoO8uQBi1B2P37wSiwMSN-NmNBSXOnyVAHzgvYedI=" alt="Submit" width="48" height="48">
+                                             
+      </form>
+    
+
    </main>
+
 </body>
 <script src="./js/index.js"></script>
 <script src="./js/voltar.js"></script>

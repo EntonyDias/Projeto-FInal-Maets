@@ -86,5 +86,7 @@ class Jogo {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    
+
 }
 ?>
