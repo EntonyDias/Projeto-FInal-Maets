@@ -44,7 +44,8 @@ header div {
 }
 
 .logo {
-   height: 107px;
+   width: 130px;
+   height: 130px;
    font-size: 20px;
    color: rgb(255, 255, 255);
    background-color: rgb(0, 0, 0);
@@ -52,6 +53,7 @@ header div {
    border: 5px solid rgb(56, 0, 56);
    border-radius: 50%;
 }
+
 
 header button:hover {
    cursor: pointer;

@@ -44,7 +44,8 @@ header div {
 }
 
 .logo {
-   height: 107px;
+   width: 130px;
+   height: 130px;
    font-size: 20px;
    color: rgb(255, 255, 255);
    background-color: rgb(0, 0, 0);
@@ -52,6 +53,7 @@ header div {
    border: 5px solid rgb(56, 0, 56);
    border-radius: 50%;
 }
+
 
  header button:hover {
    cursor: pointer;
@@ -162,4 +164,72 @@ form button {
    text-decoration: none;
    font-size: 24px;
    margin: 10px 0;
+}
+
+#dadosJogo {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+   margin: 50px auto;
+   max-width: 800px;
+   background-color: rgba(0, 0, 0, 0.8);
+   border: 5px solid rgb(98, 0, 128);
+   border-radius: 15px;
+   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+   color: white;
+   text-align: center;
+}
+
+#dadosJogo #imagem {
+   width: 100%;
+   max-height: 400px;
+   overflow: hidden;
+   border-radius: 10px;
+   margin-bottom: 20px;
+}
+
+#dadosJogo #imagem img {
+   width: 100%;
+   height: auto;
+   border-radius: 10px;
+}
+
+#dadosJogo #nome {
+   font-size: 2rem;
+   font-weight: bold;
+   margin-bottom: 10px;
+}
+
+#dadosJogo #precoDiv {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: rgb(0, 255, 0);
+   margin-bottom: 20px;
+}
+
+#dadosJogo #descricaoDiv {
+   font-size: 1rem;
+   line-height: 1.5;
+   color: rgb(200, 200, 200);
+   margin-top: 20px;
+   text-align: justify;
+}
+#dadosJogo #imagem {
+   width: 250px;
+   height: 250px;
+   overflow: hidden;
+   border-radius: 10px;
+   margin-bottom: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#dadosJogo #imagem img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   border-radius: 10px;
 }

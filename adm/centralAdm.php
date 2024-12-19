@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-    <a href="../index.php" class="logo"><img id="logo" src="../assets/logoTop.png" alt="Logo"></a>
+        <a href="../index.php" class="logo"><img id="logo" src="../assets/logoTop.png" alt="Logo"></a>
         <h1>Central do administrador</h1>
         <div>
             <form action="" method="post">
@@ -101,6 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <a href="../index.php"><img src="https://cdn-icons-png.freepik.com/256/608/608095.png?semt=ais_hybrid" alt=""></a>
         <main>
+<br>
+            <a id="botaoCadastro" href="../cadastro.php">Cadastrar novo <b>usuario</b> / <b> Desenvolvedora</b></a>
+<br><br>
             <?php
 
             switch ($tela) {
@@ -119,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <th>Nome</th>
                                     <th>cpf</th>
                                     <th>email</th>
-                                    <th>Email</th>
+                                    <th>Ações</th>
                                 </tr>
                                 <?php while ($row = $dadosUsu->fetch(PDO::FETCH_ASSOC)) : ?>
                                     <tr>
@@ -149,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <th>Nome</th>
                                     <th>cpf</th>
                                     <th>email</th>
-                                    <th>Email</th>
+                                    <th>Ações</th>
                                 </tr>
                                 <?php while ($row = $dadosAdm->fetch(PDO::FETCH_ASSOC)) : ?>
                                     <?php
@@ -174,6 +177,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
                             <table border="1">
+                                <tr>
+
+                                    <th>Nome</th>
+                                    <th>cpf</th>
+                                    <th>email</th>
+                                    <th>Ações</th>
+                                </tr>
                                 <?php while ($row = $dadosDes->fetch(PDO::FETCH_ASSOC)) : ?>
 
                                     <tr>
@@ -192,9 +202,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </section>
 
-                    <div>
-                        <a href="../cadastro.php">Cadastrar novo <b>usuario</b> / <b> Desenvolvedora</b></a>
-                    </div>
 
 
                 <?php break;

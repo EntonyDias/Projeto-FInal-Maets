@@ -44,7 +44,8 @@ header div {
 }
 
 .logo {
-   height: 107px;
+   width: 130px;
+   height: 130px;
    font-size: 20px;
    color: rgb(255, 255, 255);
    background-color: rgb(0, 0, 0);
@@ -52,6 +53,7 @@ header div {
    border: 5px solid rgb(56, 0, 56);
    border-radius: 50%;
 }
+
 
 header button:hover {
    cursor: pointer;
@@ -162,4 +164,92 @@ form button {
    text-decoration: none;
    font-size: 24px;
    margin: 10px 0;
+}
+
+/* Estilos para tabelas */
+table {
+   width: 90%;
+   /* Tabelas ocupam a maior parte da largura */
+   margin: 20px auto;
+   /* Centraliza a tabela na página */
+   border-collapse: collapse;
+   /* Remove espaços entre bordas */
+   background-color: rgba(0, 0, 0, 0.8);
+   /* Fundo com leve transparência */
+   color: white;
+   /* Texto branco */
+   font-size: 18px;
+   /* Tamanho da fonte */
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+   /* Sombra sutil para destaque */
+}
+
+/* Estilo das células (td) e cabeçalhos (th) */
+table th,
+table td {
+   padding: 15px;
+   /* Espaçamento interno */
+   text-align: center;
+   /* Centraliza o texto */
+   border: 1px solid rgba(255, 255, 255, 0.3);
+   /* Bordas suaves */
+}
+
+/* Estilo para cabeçalhos (th) */
+table th {
+   background-color: rgb(98, 0, 128);
+   /* Fundo roxo escuro */
+   font-size: 20px;
+   /* Fonte um pouco maior */
+   font-weight: bold;
+   /* Deixa o texto em negrito */
+   text-transform: uppercase;
+   /* Deixa o texto em letras maiúsculas */
+   color: white;
+   /* Texto branco */
+}
+
+/* Estilo para linhas alternadas */
+table tr:nth-child(even) {
+   background-color: rgba(255, 255, 255, 0.1);
+   /* Fundo mais claro */
+}
+
+table tr:nth-child(odd) {
+   background-color: rgba(0, 0, 0, 0.9);
+   /* Fundo mais escuro */
+}
+
+/* Hover nas linhas */
+table tr:hover {
+   background-color: rgba(98, 0, 128, 0.6);
+   /* Destaque na linha ao passar o mouse */
+   cursor: pointer;
+   /* Indica interatividade */
+}
+
+/* Ícones e links na tabela */
+table a img {
+   width: 30px;
+   height: 30px;
+   margin: 5px;
+   border-radius: 50%;
+   /* Ícones redondos */
+   transition: transform 0.3s ease;
+   /* Efeito suave ao passar o mouse */
+}
+
+table a img:hover {
+   transform: scale(1.2);
+   /* Aumenta o tamanho do ícone */
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+   /* Sombra para destaque */
+}
+
+/* Estilo para links na tabela */
+table a {
+   text-decoration: none;
+   /* Remove o sublinhado */
+   color: inherit;
+   /* Usa a cor padrão do texto */
 }
